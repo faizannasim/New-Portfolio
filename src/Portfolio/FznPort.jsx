@@ -34,6 +34,7 @@ import { SiBootstrap } from 'react-icons/si';
 import { SiJavascript, SiTailwindcss, SiPostman } from 'react-icons/si';
 import { MdPhoneIphone } from 'react-icons/md';
 import { AiOutlineApi } from 'react-icons/ai';
+import { BsYoutube } from 'react-icons/bs';
 
 
 export default function FznPort() {
@@ -179,27 +180,37 @@ export default function FznPort() {
 
 
                 {/* Social Links */}
-                <motion.div 
-                  initial={{ opacity: 0, y: 20 }} 
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4 }}
-                  className="flex gap-4 mt-4"
-                >
-                  {[
-                    { Icon: Github, href: 'https://github.com/faizannasim' },
-                    { Icon: Linkedin, href: 'https://www.linkedin.com/in/faizan-nasim-2262a930a/' },
-                    { Icon: Twitter, href: 'https://x.com/FaizanNasim8' },
-                    { Icon: Mail, href: 'faizannasim59@gmail.com' },
-                  ].map(({ Icon, href }, i) => (
-                    <a
-                      key={i}
-                      href={href}
-                      className={`${textColor} hover:${mutedColor} transition-colors`}
-                    >
-                      <Icon className="w-5 h-5" />
-                    </a>
-                  ))}
-                </motion.div>
+               {/* Social Links */}
+<motion.div 
+  initial={{ opacity: 0, y: 20 }} 
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ delay: 0.4 }}
+  className="flex gap-4 mt-4"
+>
+  {[
+    { Icon: Github, href: 'https://github.com/faizannasim', color: '#6e5494', isLucide: true },
+    { Icon: Linkedin, href: 'https://www.linkedin.com/in/faizan-nasim-2262a930a/', color: '#0A66C2' },
+    { Icon: Twitter, href: 'https://x.com/FaizanNasim8', color: '#1DA1F2' },
+    { Icon: Mail, href: 'mailto:faizannasim59@gmail.com', color: '#D44638' },
+    { Icon: BsYoutube, href: 'https://www.youtube.com/@CodeWithFaizan-x8w/videos', color: '#FF0000' },
+  ].map(({ Icon, href, color, isLucide }, i) => (
+    <a
+      key={i}
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="transition-transform hover:scale-110"
+    >
+      {isLucide ? (
+        <Icon className="w-5 h-5" stroke={color} />
+      ) : (
+        <Icon className="w-5 h-5" style={{ color }} />
+      )}
+    </a>
+  ))}
+</motion.div>
+
+
               </div>
             </motion.div>
 
