@@ -221,7 +221,7 @@ export default function FznPort() {
 
               {/* Resume Button */}
               <a
-                href="/resume.pdf"  // replace with your actual resume path
+                href="https://drive.google.com/file/d/1inYzzjd2OeeAWUvJPLHbxbV40ZHdFbnF/view?usp=sharing"  // replace with your actual resume path
                 target="_blank"
                 rel="noopener noreferrer"
                 download
