@@ -75,7 +75,8 @@ export default function FznPort() {
 ];
   const projects = [
     {
-      title: 'Bill Mate : Invoice Maker (In Progress)',
+      title: 'Bill Mate : Invoice Maker' ,
+        status: 'In Progress',
       desc: 'A React and Tailwind based web App for creating and downloading invoices with a clean and responsive design.Currently working on integrating customizable invoice templates and user input validation',
       stack: ['React', 'Tailwind',],
       year: '2023',
@@ -156,18 +157,22 @@ export default function FznPort() {
                 whileHover={{ scale: 1.05 }}
                 className={`w-24 h-24 rounded-lg ${
                   isDark ? 'bg-neutral-900' : 'bg-neutral-100'
-                } border-2 ${borderColor} flex items-center justify-center ${textColor} text-3xl font-bold cursor-default`}
+                  
+                } border-2 ${borderColor} flex items-center justify-center ${textColor} text-3xl font-bold cursor-default`} style={{ fontFamily: "Space Grotesk, sans-serif" }}
               >
                 FN
               </motion.div>
 
               <div>
-                <h1 className={`text-4xl font-bold ${textColor} mb-1`}>
+                <h1 className={`text-4xl font-bold ${textColor} mb-1`} style={{ fontFamily: "Space Grotesk, sans-serif" }}
+>
                   Faizan Nasim
                 </h1>
-               <motion.p className={mutedColor} style={{ display: 'flex', gap: '2px', overflow: 'hidden' }}>
+               <motion.p className={mutedColor} style={{ display: 'flex', gap: '2px', overflow: 'hidden' }} 
+>
   {"Frontend Developer".split("").map((char, index) => (
     <motion.span
+    className="" style={{ fontFamily: "Space Grotesk, sans-serif" }}
       key={index}
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
@@ -248,7 +253,7 @@ export default function FznPort() {
                   select-none
                  
                   whitespace-nowrap
-                `}
+                `} style={{ fontFamily: "Space Grotesk, sans-serif" }}
                 aria-label="Download Resume"
               >
                 Resume
@@ -263,10 +268,12 @@ export default function FznPort() {
             animate="visible"
             variants={fadeUp}
           >
-            <p className={`${textColor} text-lg leading-relaxed`}>
+            <p className={`${textColor} text-lg leading-relaxed`} style={{ fontFamily: "Space Grotesk, sans-serif" }}
+>
               i'm a frontend developer passionate about crafting beautiful and functional web experiences.
             </p>
-            <p className={`${mutedColor} leading-relaxed`}>
+            <p className={`${mutedColor} leading-relaxed`} style={{ fontFamily: "Space Grotesk, sans-serif" }}
+>
               a computer science enthusiast and <span className={textColor}>frontend specialist</span>. i spend most of my time building elegant interfaces or learning cutting-edge technologies. i also love creating smooth animations and pixel-perfect designs.
             </p>
           </motion.div>
@@ -277,6 +284,8 @@ export default function FznPort() {
         <section className="mb-24">
           <motion.h2 
             className={`text-sm font-semibold ${textColor} mb-6`}
+            style={{ fontFamily: "Space Grotesk, sans-serif" }}
+
             initial="hidden"
             animate="visible"
             variants={fadeUp}
@@ -286,6 +295,8 @@ export default function FznPort() {
 
           <motion.div
             className="flex flex-wrap gap-3"
+            style={{ fontFamily: "Space Grotesk, sans-serif" }}
+
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
@@ -298,7 +309,8 @@ export default function FznPort() {
                 transition={{ type: 'spring', stiffness: 300 }}
                 className={`px-4 py-2 ${
                   isDark ? 'bg-neutral-900' : 'bg-neutral-100'
-                } border ${borderColor} ${textColor} text-sm flex items-center gap-2 rounded-lg cursor-default hover:bg-neutral-700 hover:text-neutral-200`}
+                } border ${borderColor} ${textColor} text-sm flex items-center gap-2 rounded-lg cursor-default hover:bg-neutral-700 hover:text-neutral-200  `} style={{ fontFamily: "Space Grotesk, sans-serif" }}
+
               >
                 <Icon size={20} color={color} />
                 <span>{name}</span>
@@ -311,6 +323,8 @@ export default function FznPort() {
         <section className="mb-24">
           <motion.h2 
             className={`text-sm font-semibold ${textColor} mb-8`}
+            style={{ fontFamily: "Space Grotesk, sans-serif" }}
+
             initial="hidden"
             animate="visible"
             variants={fadeUp}
@@ -327,41 +341,79 @@ export default function FznPort() {
                   onMouseEnter={() => setActiveProject(i)}
                   onMouseLeave={() => setActiveProject(null)}
                   initial={{ backgroundColor: isDark ? '#000' : '#fff' }}
-                  animate={{
-                    backgroundColor:
-                      activeProject === i
-                        ? isDark
-                          ? '#27272a' // neutral-800
-                          : '#f9fafb' // neutral-50
-                        : isDark
-                        ? '#000'
-                        : '#fff',
-                    boxShadow:
-                      activeProject === i
-                        ? isDark
-                          ? '0 8px 15px rgba(255 255 255 / 0.1)'
-                          : '0 8px 15px rgba(0 0 0 / 0.1)'
-                        : 'none',
-                  }}
-                  transition={{ duration: 0.3 }}
-                  className={`border ${borderColor} p-6 rounded-lg cursor-pointer flex gap-6`}
-                >
+animate={{
+  backgroundColor:
+    activeProject === i
+      ? isDark
+        ? '#18181b'
+        : '#f4f4f5'
+      : isDark
+      ? '#0a0a0a'
+      : '#fff',
+  boxShadow:
+    activeProject === i
+      ? isDark
+        ? '0 0 20px rgba(255,255,255,0.08)'
+        : '0 0 20px rgba(0,0,0,0.08)'
+      : 'none',
+  scale: activeProject === i ? 1.03 : 1,
+}}
+whileHover={{
+  scale: 1.07,
+  background: isDark
+    ? 'linear-gradient(135deg, #000000, #3a3a3a)'
+    : 'linear-gradient(135deg, #f5f5f5, #bfbfbf)',
+  boxShadow: isDark
+    ? '0 8px 25px rgba(255,255,255,0.12)'
+    : '0 8px 25px rgba(0,0,0,0.12)',
+}}
+transition={{
+  duration: 0.25,
+  ease: 'easeOut',
+}}
+className={`border ${borderColor} p-6 rounded-2xl cursor-pointer flex gap-6 transition-all`}
+>
+
+
                   {/* Project Image */}
                   <img
                     src={project.image}
                     alt={project.title}
                     className="w-36 h-24 object-cover rounded-md flex-shrink-0"
+                    
                   />
+                  
+
 
                   <div className="flex flex-col flex-1">
                     <div className="flex justify-between items-start mb-3">
-                      <h3
-                        className={`text-xl font-semibold ${
-                          textColor
-                        } transition-colors duration-300`}
-                      >
-                        {project.title}
-                      </h3>
+                    <div className="flex justify-between items-start mb-3">
+  <div className="flex items-center gap-2">
+    <h3
+      className={`text-xl font-semibold ${textColor} transition-colors duration-300`} style={{ fontFamily: "Space Grotesk, sans-serif" }}
+
+
+    >
+      {project.title}
+    </h3>
+    {project.status && (
+     <span
+  className={`text-[11px] px-2 py-[1px] rounded-md font-medium border
+    ${isDark 
+      ? 'border-green-400 text-green-300 bg-green-400/10' 
+      : 'border-green-300 text-green-700 bg-green-100'}
+  `}  
+>
+  {project.status}
+</span>
+
+    )}
+  </div>
+
+  
+</div>
+
+                      
                       <div className="flex gap-3">
                         <a
                           href={project.github}
@@ -384,7 +436,8 @@ export default function FznPort() {
                       </div>
                     </div>
 
-                    <p className={`${mutedColor} text-sm mb-4 leading-relaxed`}>
+                    <p className={`${mutedColor} text-sm mb-4 leading-relaxed`} style={{ fontFamily: "Space Grotesk, sans-serif" }}
+>
                       {project.desc}
                     </p>
 
@@ -414,7 +467,8 @@ export default function FznPort() {
             <motion.button
               onClick={() => setShowAllProjects(!showAllProjects)}
               whileHover={{ scale: 1.05, backgroundColor: isDark ? '#27272a' : '#e5e7eb' }}
-              className={`px-6 py-2 border ${borderColor} ${textColor} text-sm rounded hover:bg-neutral-800 hover:text-neutral-200 transition-colors duration-300`}
+              className={`px-6 py-2 border ${borderColor} ${textColor} text-sm rounded hover:bg-neutral-800 hover:text-neutral-200 transition-colors duration-300`} style={{ fontFamily: "Space Grotesk, sans-serif" }}
+
             >
               {showAllProjects ? 'Show Less' : 'Show More Projects'}
             </motion.button>
@@ -438,10 +492,12 @@ export default function FznPort() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
           >
-            <p className={`${textColor} text-2xl font-semibold`}>
+            <p className={`${textColor} text-2xl font-semibold`} style={{ fontFamily: "Space Grotesk, sans-serif" }}
+>
               Interested in working together?
             </p>
-            <p className={mutedColor}>
+            <p className={mutedColor} style={{ fontFamily: "Space Grotesk, sans-serif" }}
+>
               Currently available for freelance projects and full-time
               opportunities.
             </p>
@@ -449,7 +505,8 @@ export default function FznPort() {
             <div className="pt-6">
               <a
                 href="mailto:faizannasim59@gmail.com"
-                className={`inline-block text-lg ${textColor} hover:${mutedColor} transition-colors`}
+                className={`inline-block text-lg ${textColor} hover:${mutedColor} transition-colors`} style={{ fontFamily: "Space Grotesk, sans-serif" }}
+
               >
                 faizannasim59@gmail.com
               </a>
@@ -459,7 +516,8 @@ export default function FznPort() {
 
         {/* Footer */}
         <footer
-          className={`mt-24 pt-8 border-t ${borderColor} flex justify-between items-center`}
+          className={`mt-24 pt-8 border-t ${borderColor} flex justify-between items-center`} style={{ fontFamily: "Space Grotesk, sans-serif" }}
+
         >
           <p className={`${mutedColor} text-sm`}>
             Built and maintained by Faizan Nasim

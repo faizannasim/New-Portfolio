@@ -1,0 +1,9 @@
+/* Main global font */
+body {
+  font-family: 'Outfit', sans-serif;
+}
+
+/* Special font for project titles */
+.project-title {
+  font-family: 'Space Grotesk', sans-serif;
+}
