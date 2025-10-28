@@ -476,53 +476,65 @@ className={`border ${borderColor} p-6 rounded-2xl cursor-pointer flex gap-6 tran
         </section>
 
         {/* Contact Section */}
-        <section className={`border-t ${borderColor} pt-16`}>
-          <motion.h2 
-            className={`text-sm font-semibold ${textColor} mb-6`}
-            initial="hidden"
-            animate="visible"
-            variants={fadeUp}
-          >
-            Let's connect.
-          </motion.h2>
+      {/* Contact Section */}
+<section className={`border-t ${borderColor} pt-20 pb-16`}>
+  <motion.div
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6, ease: "easeOut" }}
+    className="max-w-3xl mx-auto text-center space-y-5"
+  >
+    <h2
+      className={`text-sm font-semibold tracking-widest uppercase ${textColor}`}
+      style={{ fontFamily: "Space Grotesk, sans-serif" }}
+    >
+      Let’s Connect
+    </h2>
 
-          <motion.div 
-            className="space-y-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-          >
-            <p className={`${textColor} text-2xl font-semibold`} style={{ fontFamily: "Space Grotesk, sans-serif" }}
+    <p
+      className={`${textColor} text-3xl sm:text-4xl font-semibold`}
+      style={{ fontFamily: "Space Grotesk, sans-serif" }}
+    >
+      Interested in working together?
+    </p>
+
+    <p
+      className={`${mutedColor} text-base sm:text-lg leading-relaxed`}
+      style={{ fontFamily: "Space Grotesk, sans-serif" }}
+    >
+      I’m open to exciting projects, collaborations, and opportunities where I can
+      contribute and grow. Whether it’s a small idea or a big vision - feel free
+      to reach out.
+    </p>
+
+    <motion.a
+      href="mailto:faizannasim59@gmail.com"
+      whileHover={{
+        scale: 1.05,
+        color: "#60a5fa", // soft blue hover
+      }}
+      transition={{ type: "spring", stiffness: 300 }}
+      className={`inline-block mt-6 text-lg font-medium ${textColor} underline-offset-4 hover:underline`}
+      style={{ fontFamily: "Space Grotesk, sans-serif" }}
+    >
+      faizannasim59@gmail.com
+    </motion.a>
+  </motion.div>
+</section>
+
+{/* Footer */}
+<footer
+  className={`pt-10 pb-6 border-t ${borderColor} text-center`}
+  style={{ fontFamily: "Space Grotesk, sans-serif" }}
 >
-              Interested in working together?
-            </p>
-            <p className={mutedColor} style={{ fontFamily: "Space Grotesk, sans-serif" }}
->
-              Currently available for freelance projects and full-time
-              opportunities.
-            </p>
+  <p className={`${mutedColor} text-sm`}>
+    © {new Date().getFullYear()} - Built and maintained by  {" "} 
+    <span className="text-white font-semibold hover:text-gray-300 transition-colors">
+      Faizan Nasim
+    </span>
+  </p>
+</footer>
 
-            <div className="pt-6">
-              <a
-                href="mailto:faizannasim59@gmail.com"
-                className={`inline-block text-lg ${textColor} hover:${mutedColor} transition-colors`} style={{ fontFamily: "Space Grotesk, sans-serif" }}
-
-              >
-                faizannasim59@gmail.com
-              </a>
-            </div>
-          </motion.div>
-        </section>
-
-        {/* Footer */}
-        <footer
-          className={`mt-24 pt-8 border-t ${borderColor} flex justify-between items-center`} style={{ fontFamily: "Space Grotesk, sans-serif" }}
-
-        >
-          <p className={`${mutedColor} text-sm`}>
-            Built and maintained by Faizan Nasim
-          </p>
-        </footer>
       </div>
     </div>
   );
