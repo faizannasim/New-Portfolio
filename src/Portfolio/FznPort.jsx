@@ -108,12 +108,12 @@ export default function FznPort() {
   const projects = [
     {
       title: 'Bill Mate : Invoice Maker',
-      status: 'In Progress',
-      desc: 'A React and Tailwind based web App for creating and downloading invoices with a clean and responsive design.Currently working on integrating customizable invoice templates and user input validation',
-      stack: ['React', 'Tailwind',],
+     
+      desc: 'Created a responsive platform to generate, preview, and download invoices as PDFs. Added QR-based invoice viewing, voice narration via Web Speech API, confetti animation on download, and user analytics with Microsoft Clarity.',
+      stack: ['React', 'Tailwind','Web Speech API',"Microsoft Clarity"],
       year: '2023',
       github: 'https://github.com/faizannasim/BillMate.git',
-      live: '#',
+      live: 'https://bill-mate-iota.vercel.app/',
       image: bill,
     },
     {
@@ -267,7 +267,7 @@ export default function FznPort() {
 
               {/* Resume Button */}
               <a
-                href="https://drive.google.com/file/d/1inYzzjd2OeeAWUvJPLHbxbV40ZHdFbnF/view?usp=sharing"
+                href="https://drive.google.com/file/d/1MF4AQyJUHizpCfzCQOjej7Prwdd7gAGv/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 download
