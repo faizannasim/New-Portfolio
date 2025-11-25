@@ -131,7 +131,7 @@ export default function FznPort() {
       stack: ['React', 'Tailwind', 'Dummy API', 'Local Storage'],
       year: '2024',
       github: 'https://github.com/faizannasim/F1Arena.git',
-      live: 'https://formula-1-nlxb-p1m3n15uc-formula-1.vercel.app/',
+      live: 'https://formula-1-2e81.vercel.app/',
       image: car,
     },
     {
