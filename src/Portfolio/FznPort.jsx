@@ -263,7 +263,7 @@ export default function FznPort() {
               </button>
 
               <a
-                href="https://drive.google.com/file/d/1ctnRJyrKfNHD8PQYOJgs7mQLH7nslgp5/view?usp=sharing"
+                href="https://drive.google.com/file/d/1pA-JNU1_VBV__SVKmfRAcXpz5tQWkiXS/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 download
