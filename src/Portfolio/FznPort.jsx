@@ -117,15 +117,6 @@ export default function FznPort() {
       image: bill,
     },
     {
-      title: 'Ask Ai',
-      desc: 'Say goodbye to coding from scratch. Let Ask AI, your smart coding assistant, supercharge your projects from the get-go!',
-      stack: ['React', 'Tailwind', 'Google API', 'Local Storage'],
-      year: '2025',
-      github: 'https://github.com/faizannasim/AskAI.git',
-      live: 'https://ask-ai-sop1.vercel.app/',
-      image: git,
-    },
-    {
       title: 'F1 Arena',
       desc: 'Inspired by Forumla 1,with a fullscreen video,driver quotes and responsive design.Includesa dummy API to add or update users via modal using POST and PUT requests ',
       stack: ['React', 'Tailwind', 'Dummy API', 'Local Storage'],
@@ -172,6 +163,16 @@ export default function FznPort() {
     },
   ];
 
+  const experiences = [
+    {
+      company: "GEDU Services ",
+      role: "Associate Frontend Developer",
+      period: "December 2025 — Present",
+      isPresent: true,
+      desc: "Designing and refining responsive dashboards with dynamic API integrations, improving UI consistency and enabling smooth data flow across Student, Admin, and Instructor roles. Contributing through Jira and GitHub workflows while optimizing components for performance and cross-device responsiveness."
+    },
+  ];
+
   return (
     <div className={`min-h-screen ${bgColor} transition-colors duration-500 relative`}>
       <div className="max-w-4xl mx-auto px-8 py-16">
@@ -184,7 +185,6 @@ export default function FznPort() {
               transition={{ duration: 0.8 }}
               className="flex items-start gap-6"
             >
-              {/* Profile Image Placeholder */}
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 className={`w-24 h-24 rounded-lg ${isDark ? 'bg-neutral-900' : 'bg-neutral-100'
@@ -199,7 +199,7 @@ export default function FznPort() {
                 >
                   Faizan Nasim
                 </h1>
-                <motion.p className={mutedColor} style={{ display: 'flex', gap: '2px', overflow: 'hidden' }}
+                <motion.p className={`${mutedColor} text-lg`} style={{ display: 'flex', gap: '2px', overflow: 'hidden' }}
                 >
                   {"Frontend Developer".split("").map((char, index) => (
                     <motion.span
@@ -215,7 +215,6 @@ export default function FznPort() {
                 </motion.p>
 
 
-                {/* Social Links */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -249,14 +248,12 @@ export default function FznPort() {
               </div>
             </motion.div>
 
-            {/* Theme Toggle and Resume Button */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               className="flex items-center gap-4"
             >
-              {/* Theme Toggle */}
               <button
                 onClick={() => setIsDark(!isDark)}
                 className={`w-10 h-10  flex items-center justify-center ${textColor} hover:opacity-70 transition-opacity`}
@@ -265,7 +262,6 @@ export default function FznPort() {
                 {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
               </button>
 
-              {/* Resume Button */}
               <a
                 href="https://drive.google.com/file/d/1ctnRJyrKfNHD8PQYOJgs7mQLH7nslgp5/view?usp=sharing"
                 target="_blank"
@@ -281,7 +277,6 @@ export default function FznPort() {
                   hover:opacity-80
                   transition-opacity
                   select-none
-                 
                   whitespace-nowrap
                 `} style={{ fontFamily: "Space Grotesk, sans-serif" }}
                 aria-label="Download Resume"
@@ -291,7 +286,6 @@ export default function FznPort() {
             </motion.div>
           </div>
 
-          {/* Bio */}
           <motion.div
             className="space-y-4"
             initial="hidden"
@@ -300,7 +294,7 @@ export default function FznPort() {
             transition={{ delay: 0.6, duration: 0.8 }}
           >
             <motion.p 
-              className={`${textColor} text-lg leading-relaxed`} 
+              className={`${textColor} text-xl leading-relaxed font-medium`} 
               style={{ fontFamily: "Space Grotesk, sans-serif" }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -309,7 +303,7 @@ export default function FznPort() {
               i'm a frontend developer passionate about crafting beautiful and functional web experiences.
             </motion.p>
             <motion.p 
-              className={`${mutedColor} leading-relaxed`} 
+              className={`${mutedColor} text-lg leading-relaxed opacity-90`} 
               style={{ fontFamily: "Space Grotesk, sans-serif" }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -321,7 +315,6 @@ export default function FznPort() {
 
         </header>
 
-        {/* Tools & Technologies */}
         <section className="mb-24">
           <motion.h2
             className={`text-sm font-semibold ${textColor} mb-6`}
@@ -333,6 +326,7 @@ export default function FznPort() {
           >
             Tools & Technologies
           </motion.h2>
+          
 
           <motion.div
             className="flex flex-wrap gap-3"
@@ -367,8 +361,75 @@ export default function FznPort() {
             ))}
           </motion.div>
         </section>
+        
+        <section className="mb-24">
+          <motion.h2
+            className={`text-sm font-semibold ${textColor} mb-8`}
+            style={{ fontFamily: "Space Grotesk, sans-serif" }}
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            Experience
+          </motion.h2>
 
-        {/* Projects Section */}
+          <div className="space-y-10">
+            {experiences.map((exp, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+              >
+                <div className="flex flex-col md:flex-row md:items-center justify-between mb-2">
+                  <div className="flex items-center gap-3">
+                    <h3 
+                      className={`text-xl font-bold ${textColor}`}
+                      style={{ fontFamily: "Space Grotesk, sans-serif" }}
+                    >
+                      {exp.company}
+                    </h3>
+                    
+                    {exp.isPresent && (
+                      <div className="flex items-center gap-2 px-2 py-1 rounded-full bg-green-500/10 border border-green-500/20">
+                        <span className="relative flex h-2 w-2">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                        </span>
+                        
+                      </div>
+                    )}
+                  </div>
+                  
+                  <span 
+                    className={`${mutedColor} text-sm font-medium mt-1 md:mt-0`}
+                    style={{ fontFamily: "Space Grotesk, sans-serif" }}
+                  >
+                    {exp.period}
+                  </span>
+                </div>
+
+                <div className="space-y-2">
+                  <h4 
+                    className={`${textColor} text-lg font-semibold opacity-90 mb-4`}
+                    style={{ fontFamily: "Space Grotesk, sans-serif " }}
+                  >
+                    {exp.role}
+                  </h4>
+                  <p 
+                    className={`${mutedColor} text-base leading-relaxed max-w-none opacity-90`}
+                    style={{ fontFamily: "Space Grotesk, sans-serif" }}
+                  >
+                    {exp.desc}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
         <section className="mb-24">
           <motion.h2
             className={`text-sm font-semibold ${textColor} mb-8`}
@@ -431,7 +492,6 @@ export default function FznPort() {
                 >
 
 
-                  {/* Project Image */}
                   <motion.img
                     src={project.image}
                     alt={project.title}
@@ -444,12 +504,9 @@ export default function FznPort() {
 
                   <div className="flex flex-col flex-1">
                     <div className="flex justify-between items-start mb-3">
-                      <div className="flex justify-between items-start mb-3">
                         <div className="flex items-center gap-2">
                           <h3
-                            className={`text-xl font-semibold ${textColor} transition-colors duration-300`} style={{ fontFamily: "Space Grotesk, sans-serif" }}
-
-
+                            className={`text-xl font-bold ${textColor} transition-colors duration-300`} style={{ fontFamily: "Space Grotesk, sans-serif" }}
                           >
                             {project.title}
                           </h3>
@@ -466,10 +523,6 @@ export default function FznPort() {
 
                           )}
                         </div>
-
-
-                      </div>
-
 
                       <div className="flex gap-3">
                         <a
@@ -493,7 +546,7 @@ export default function FznPort() {
                       </div>
                     </div>
 
-                    <p className={`${mutedColor} text-sm mb-4 leading-relaxed`} style={{ fontFamily: "Space Grotesk, sans-serif" }}
+                    <p className={`${mutedColor} text-[15px] mb-4 leading-relaxed opacity-90`} style={{ fontFamily: "Space Grotesk, sans-serif" }}
                     >
                       {project.desc}
                     </p>
@@ -514,7 +567,6 @@ export default function FznPort() {
               ))}
           </motion.div>
 
-          {/* Show More Button */}
           <motion.div
             className="mt-8 text-center"
             initial={{ opacity: 0, y: 20 }}
@@ -537,7 +589,6 @@ export default function FznPort() {
           </motion.div>
         </section>
 
-        {/* Contact Section */}
         <section className={`border-t ${borderColor} pt-20 pb-16`}>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -569,7 +620,7 @@ export default function FznPort() {
             </motion.p>
 
             <motion.p
-              className={`${mutedColor} text-base sm:text-lg leading-relaxed`}
+              className={`${mutedColor} text-lg leading-relaxed opacity-90`}
               style={{ fontFamily: "Space Grotesk, sans-serif" }}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -600,11 +651,10 @@ export default function FznPort() {
           </motion.div>
         </section>
 
-        {/* Footer */}
         <footer
           className={`pt-10 pb-6 border-t ${borderColor} text-center`}
           style={{ fontFamily: "Space Grotesk, sans-serif" }}
-        >
+        > 
           <p className={`${mutedColor} text-sm`}>
             © {new Date().getFullYear()} - Built and maintained by  {" "}
             <span className="text-white font-semibold hover:text-gray-300 transition-colors">
