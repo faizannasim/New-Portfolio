@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Github, Linkedin, Mail, Twitter, ExternalLink, Moon, Sun, ArrowUpRight } from 'lucide-react';
 import { FaHtml5, FaCss3Alt, FaReact, FaGitAlt } from 'react-icons/fa';
-import { SiFramer, SiJavascript, SiTailwindcss, SiPostman, SiBootstrap, SiNextdotjs, SiTypescript } from 'react-icons/si';
+import { SiFramer, SiJavascript, SiTailwindcss, SiPostman, SiBootstrap, SiNextdotjs, SiPython ,SiFastapi} from 'react-icons/si';
 import { AiOutlineLock, AiOutlineThunderbolt, AiOutlineApi } from 'react-icons/ai';
 import { MdPhoneIphone } from 'react-icons/md';
 import { BsYoutube } from 'react-icons/bs';
-import { motion, useScroll, useTransform, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+
+import { useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
 
 const T = {
   dark: {
@@ -48,7 +50,9 @@ const TOOLS = [
   { name: 'HTML5', Icon: FaHtml5, color: '#E34F26' },
   { name: 'CSS3', Icon: FaCss3Alt, color: '#1572B6' },
   { name: 'JavaScript', Icon: SiJavascript, color: '#F7DF1E' },
-  { name: 'TypeScript', Icon: SiTypescript, color: '#3178C6' },
+  { name: 'Python', Icon: SiPython, color: '#3776AB' },
+  { name: 'FastAPI', Icon: SiFastapi, color: '#00CC00' },
+
   { name: 'React.js', Icon: FaReact, color: '#61DAFB' },
   { name: 'Next.js', Icon: SiNextdotjs, color: '#888' },
   { name: 'Tailwind CSS', Icon: SiTailwindcss, color: '#06B6D4' },
@@ -70,6 +74,7 @@ const PROJECTS = [
     gh: 'https://github.com/faizannasim/BillMate.git',
     live: 'https://bill-mate-iota.vercel.app/',
     kpi: '100', kpiLabel: 'Lighthouse', featured: true,
+    img: '/bill.png'
   },
   {
     n: '02', title: 'Ask AI', sub: 'Chat App', year: '2024',
@@ -78,6 +83,7 @@ const PROJECTS = [
     gh: 'https://github.com/faizannasim',
     live: '#',
     kpi: '89', kpiLabel: 'Accessibility',
+     img: '/ask.png'
   },
   {
     n: '03', title: 'F1 Arena', sub: 'F1 Dashboard', year: '2024',
@@ -86,7 +92,9 @@ const PROJECTS = [
     gh: 'https://github.com/faizannasim/F1Arena.git',
     live: 'https://formula-1-2e81.vercel.app/',
     kpi: '1K+', kpiLabel: 'Data Points',
+     img: '/f1.png'
   },
+  
   {
     n: '04', title: 'Portfolio', sub: 'Personal Site', year: '2024',
     desc: 'Fully responsive portfolio with animated UI, mobile-first design. Deployed on Vercel.',
@@ -94,6 +102,7 @@ const PROJECTS = [
     gh: 'https://github.com/faizannasim/Faizan-Web.git',
     live: 'https://faizanwebbb.netlify.app/',
     kpi: '94', kpiLabel: 'Accessibility',
+     img: '/Port.png'
   },
   {
     n: '05', title: 'SecureSignIn', sub: 'Auth System', year: '2023',
@@ -101,6 +110,7 @@ const PROJECTS = [
     stack: ['React', 'React Router', 'Tailwind'],
     gh: 'https://github.com/faizannasim/SecureSignIn.git',
     live: 'https://login-auth-wine.vercel.app/',
+     img: '/Login.png',
     kpi: null,
   },
   {
@@ -110,6 +120,7 @@ const PROJECTS = [
     gh: 'https://github.com/faizannasim/chandigarh-university.git',
     live: 'https://chandigarh-university.vercel.app/',
     kpi: null,
+     img: '/cg.png'
   },
 ];
 
@@ -138,7 +149,7 @@ export default function Portfolio() {
   const heroFade = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
 
   const gl = `
-    @import url('https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Cabinet+Grotesk:wght@400;500;700;800;900&family=JetBrains+Mono:wght@300;400&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Cabinet+Grotesk:wght@400;500;700;800;900&family=JetBrains+Mono:wght@300;400;500;600&display=swap');
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
     body{
@@ -187,71 +198,91 @@ export default function Portfolio() {
         }}/>
       </div>
 
-      {/* NAV */}
-      <motion.header
-        initial={{opacity:0,y:-14}}
-        animate={{opacity:1,y:0}}
-        transition={{duration:.6,ease:[.22,1,.36,1]}}
+      {/* ───────── FIXED TOP-LEFT LOGO ───────── */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 0.2, duration: 0.6 }}
         style={{
-          position:'fixed',top:0,left:0,right:0,zIndex:500,
-          display:'flex',alignItems:'center',justifyContent:'space-between',
-          padding:'0 clamp(20px,4vw,56px)',height:64,
-          background:dark?'rgba(5,5,5,.85)':'rgba(247,245,240,.88)',
-          backdropFilter:'blur(22px)',
-          borderBottom:`1px solid ${t.border}`,
+          position: 'fixed',
+          top: 'clamp(20px, 4vw, 40px)',
+          left: 'clamp(20px, 4vw, 56px)',
+          zIndex: 500,
         }}
       >
-        <div style={{display:'flex',alignItems:'center',gap:10}}>
-          <motion.div whileHover={{scale:1.1,rotate:6}} style={{
-            width:36,height:36,background:t.accent,borderRadius:8,
-            display:'flex',alignItems:'center',justifyContent:'center',
-            fontFamily:"'Clash Display',sans-serif",fontSize:14,
-            fontWeight:700,color:'#000',cursor:'none',letterSpacing:'.5px',
-          }}>FN</motion.div>
-          <div>
-            <div style={{fontSize:13,fontWeight:700,color:t.text,lineHeight:1.15}}>Faizan Nasim</div>
-            <div className="mono" style={{fontSize:10,color:t.mutedText,letterSpacing:'.08em'}}>Frontend Developer</div>
-          </div>
+       
+      </motion.div>
+
+      {/* ───────── FLOATING BOTTOM DOCK ───────── */}
+      <motion.div
+        initial={{ y: 100, opacity: 0, x: '-50%' }}
+        animate={{ y: 0, opacity: 1, x: '-50%' }}
+        transition={{ delay: 0.8, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        style={{
+          position: 'fixed',
+          bottom: 'clamp(20px, 4vw, 32px)',
+          left: '50%',
+          zIndex: 500,
+          display: 'flex',
+          alignItems: 'center',
+          gap: 16,
+          padding: '10px 10px 10px 20px',
+          borderRadius: 99,
+          background: dark ? 'rgba(20,20,20,0.6)' : 'rgba(255,255,255,0.7)',
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
+          border: `1px solid ${t.borderStrong}`,
+          boxShadow: dark ? '0 20px 40px -10px rgba(0,0,0,0.5)' : '0 20px 40px -10px rgba(0,0,0,0.1)'
+        }}
+      >
+        {/* Live Status */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8, paddingRight: 8, borderRight: `1px solid ${t.border}` }}>
+          <span style={{
+            width: 8, height: 8, borderRadius: '50%', background: '#22c55e', display: 'inline-block',
+            animation: 'livePulse 2s infinite',
+          }}/>
+          <span className="mono" style={{ fontSize: 11, color: t.text, fontWeight: 500, letterSpacing: '.04em' }}>Available</span>
         </div>
-        <div style={{display:'flex',alignItems:'center',gap:12}}>
-          <div style={{display:'flex',alignItems:'center',gap:6}}>
-            <span style={{
-              width:7,height:7,borderRadius:'50%',background:'#22c55e',display:'inline-block',
-              animation:'livePulse 2s infinite',
-            }}/>
-            <span className="mono" style={{fontSize:11,color:'#22c55e',letterSpacing:'.06em'}}>Available</span>
-          </div>
-          <button onClick={()=>setDark(!dark)} style={{
-            width:34,height:34,border:`1px solid ${t.border}`,borderRadius:7,
-            background:'transparent',color:t.text,display:'flex',
-            alignItems:'center',justifyContent:'center',cursor:'none',
-          }}>
-            {dark?<Sun size={13}/>:<Moon size={13}/>}
-          </button>
-          <motion.a
-            href="https://drive.google.com/file/d/1gsVt9bU0ZKdohJvVU77FoHP7BRCS724O/view?usp=sharing"
-            target="_blank" rel="noopener noreferrer"
-            whileHover={{scale:1.04}} whileTap={{scale:.97}}
-            style={{
-              padding:'7px 16px',borderRadius:7,background:t.accent,
-              color:'#000',fontSize:12,fontWeight:800,cursor:'none',letterSpacing:'.02em',
-            }}
-          >Resume ↗</motion.a>
-        </div>
-      </motion.header>
+
+        {/* Theme Toggle */}
+        <button onClick={() => setDark(!dark)} style={{
+          width: 38, height: 38, border: 'none', borderRadius: '50%',
+          background: t.surfaceHover, color: t.text, display: 'flex',
+          alignItems: 'center', justifyContent: 'center', cursor: 'none',
+          transition: 'background 0.2s'
+        }}>
+          {dark ? <Sun size={15} /> : <Moon size={15} />}
+        </button>
+
+        {/* Resume Button */}
+        <motion.a
+          href="https://drive.google.com/file/d/1nPuoR2TjcYr2h2e7-WcdQbYi38DW_dpt/view?usp=sharing"
+          target="_blank" rel="noopener noreferrer"
+          whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
+          style={{
+            padding: '10px 22px', borderRadius: 99, background: t.accent,
+            color: '#000', fontSize: 13, fontWeight: 700, cursor: 'none', letterSpacing: '.02em',
+            display: 'flex', alignItems: 'center', gap: 6
+          }}
+        >
+          Resume <ArrowUpRight size={14}/>
+        </motion.a>
+      </motion.div>
 
       {/* ───────── HERO ───────── */}
       <motion.section
         ref={heroRef}
         style={{
           y:heroParallax,opacity:heroFade,
-          paddingTop:'clamp(120px,14vw,180px)',
+          // 👇 IS LINE KO CHANGE KARO (140px se 80px kar diya hai)
+          paddingTop:'clamp(80px, 8vw, 120px)', 
           paddingBottom:'clamp(80px,10vw,140px)',
           paddingLeft:'clamp(20px,4vw,56px)',
           paddingRight:'clamp(20px,4vw,56px)',
           maxWidth:1100,margin:'0 auto',
           position:'relative',zIndex:1,
         }}
+      
       >
         {/* pill badge */}
         <motion.div
@@ -271,10 +302,10 @@ export default function Portfolio() {
         </motion.div>
 
         {/* Big name — slide up per word */}
-        <div style={{marginBottom:36}}>
+        <div style={{marginBottom:12}}>
           {[
             {word:'Faizan', color:t.text, delay:.15},
-            {word:'Nasim', color:t.accent, delay:.22},
+            {word:'Nasim', color:t.text, delay:.22},
           ].map(({word,color,delay})=>(
             <div key={word} style={{overflow:'hidden'}}>
               <motion.div
@@ -291,25 +322,49 @@ export default function Portfolio() {
           ))}
         </div>
 
+        {/* EXPLICIT ROLE HIGHLIGHT */}
+        <div style={{ overflow: 'hidden', marginBottom: 36 }}>
+          <motion.div
+            initial={{ y: '100%', opacity: 0 }} animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.35, duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+            className="mono"
+            style={{
+              fontSize: 'clamp(24px, 4vw, 42px)',
+              fontWeight: 500,
+              color: t.text,
+              display: 'flex',
+              alignItems: 'center',
+              gap: 12,
+              letterSpacing: '-0.02em'
+            }}
+          >
+            <span style={{ color: t.accent, fontWeight: 300 }}>&lt;</span>
+            Frontend Developer
+            <span style={{ color: t.accent, fontWeight: 300 }}>/&gt;</span>
+          </motion.div>
+        </div>
+
         {/* descriptor */}
         <motion.div
           initial={{opacity:0,y:14}} animate={{opacity:1,y:0}}
-          transition={{delay:.38,duration:.6}}
+          transition={{delay:.45,duration:.6}}
           style={{display:'flex',alignItems:'flex-start',gap:18,marginBottom:40,maxWidth:600}}
         >
           <div style={{width:3,height:52,background:t.accent,borderRadius:2,flexShrink:0,marginTop:4}}/>
           <p style={{fontSize:'clamp(15px,1.6vw,18px)',color:t.dim,lineHeight:1.75,fontWeight:500}}>
-            Frontend developer building responsive, API-driven web applications.
+            Dedicated <span style={{color:t.text, fontWeight:800, borderBottom:`2px solid ${t.accent}`}}>Frontend Developer</span> building responsive, API-driven web applications. 
             Specialising in <span style={{color:t.text,fontWeight:700}}>React</span>,{' '}
             <span style={{color:t.text,fontWeight:700}}>Tailwind CSS</span>, and seamless user experiences.
           </p>
         </motion.div>
 
         {/* social row */}
+        {/* social row */}
+        {/* social row */}
         <motion.div
           initial={{opacity:0,y:10}} animate={{opacity:1,y:0}}
-          transition={{delay:.5,duration:.55}}
-          style={{display:'flex',gap:8,flexWrap:'wrap'}}
+          transition={{delay:.55,duration:.55}}
+          style={{display:'flex',gap:12,flexWrap:'wrap'}} // Gap thoda badhaya hai
         >
           {[
             {Icon:Github,href:'https://github.com/faizannasim',label:'GitHub'},
@@ -320,48 +375,62 @@ export default function Portfolio() {
           ].map(({Icon,href,label})=>(
             <motion.a
               key={label} href={href} target="_blank" rel="noopener noreferrer"
-              whileHover={{scale:1.05,borderColor:t.accentBorder,color:t.text}}
+              whileHover={{
+                scale: 1.05, 
+                borderColor: t.accent, // Hover pe border accent color ka hoga
+                background: t.accentDim, // Hover pe slight accent background
+                color: t.text
+              }}
               style={{
-                display:'flex',alignItems:'center',gap:6,padding:'7px 13px',
-                border:`1px solid ${t.border}`,borderRadius:7,
-                fontSize:12,fontWeight:600,color:t.mutedText,cursor:'none',
-                transition:'all .2s',
+                display:'flex',alignItems:'center',gap:8,
+                padding:'10px 18px', // Padding thodi badhai hai for bigger click area
+                border:`1px solid ${t.borderStrong}`, // Border thoda visible banaya hai
+                borderRadius: 99, // Pill shape
+                background: t.surface, // Buttons pop out honge background se
+                fontSize: 14, fontWeight: 700, color: t.text, // Text bright kiya hai
+                cursor:'none',
+                transition:'all .2s ease',
               }}
             >
-              <Icon size={13}/>{label}
+              <Icon size={16}/>{label}
             </motion.a>
           ))}
         </motion.div>
       </motion.section>
 
-      {/* ───────── MARQUEE TICKER ───────── */}
-      <div style={{
-        borderTop:`1px solid ${t.border}`,borderBottom:`1px solid ${t.border}`,
-        overflow:'hidden',padding:'14px 0',position:'relative',zIndex:1,
-      }}>
-        <motion.div
-          animate={{x:['0%','-50%']}}
-          transition={{duration:22,ease:'linear',repeat:Infinity}}
-          style={{display:'flex',gap:0,whiteSpace:'nowrap'}}
-        >
-          {[...Array(2)].map((_,ri)=>(
-            <span key={ri} style={{display:'inline-flex',gap:0}}>
-              {['React','TypeScript','Next.js','Tailwind CSS','Framer Motion','REST APIs','Responsive Design','GSAP','Git & GitHub','Authentication'].map((s,i)=>(
-                <span key={i} style={{display:'inline-flex',alignItems:'center',gap:28,padding:'0 28px'}}>
-                  <span className="mono" style={{fontSize:11,letterSpacing:'.1em',textTransform:'uppercase',color:t.mutedText}}>{s}</span>
-                  <span style={{width:4,height:4,borderRadius:'50%',background:t.accent,display:'inline-block'}}/>
-                </span>
-              ))}
-            </span>
-          ))}
-        </motion.div>
-      </div>
-
       {/* ───────── MAIN CONTENT ───────── */}
-      <main style={{maxWidth:1100,margin:'0 auto',padding:'0 clamp(20px,4vw,56px)',position:'relative',zIndex:1,paddingTop:72}}>
+      <main style={{maxWidth:1100,margin:'0 auto',padding:'0 clamp(20px,4vw,56px)',position:'relative',zIndex:1,paddingTop:20}}>
+
+        {/* STACK */}
+        <Section t={t} label="Stack" num="01">
+          <motion.div
+            initial="h" whileInView="v" viewport={{once:true}}
+            variants={{v:{transition:{staggerChildren:.04}},h:{}}}
+            style={{display:'flex',flexWrap:'wrap',gap:8}}
+          >
+            {TOOLS.map(({name,Icon,color})=>(
+              <motion.div
+                key={name}
+                variants={{h:{opacity:0,scale:.82,y:8},v:{opacity:1,scale:1,y:0}}}
+                whileHover={{scale:1.07,y:-2}}
+                style={{
+                  display:'flex',alignItems:'center',gap:7,
+                  padding:'8px 14px',borderRadius:8,
+                  border:`1px solid ${t.border}`,background:t.surface,
+                  fontSize:13,fontWeight:600,color:t.mutedText,
+                  cursor:'none',transition:'all .2s',
+                }}
+                onMouseEnter={e=>{e.currentTarget.style.color=t.text;e.currentTarget.style.borderColor=color+'44';}}
+                onMouseLeave={e=>{e.currentTarget.style.color=t.mutedText;e.currentTarget.style.borderColor=t.border;}}
+              >
+                <Icon size={15} color={color}/>{name}
+              </motion.div>
+            ))}
+          </motion.div>
+        </Section>
 
         {/* EXPERIENCE */}
-        <Section t={t} label="Experience" num="01">
+        <Section t={t} label="Experience" num="02">
           <motion.div
             initial={{opacity:0,y:20}} whileInView={{opacity:1,y:0}}
             viewport={{once:true}} transition={{duration:.65}}
@@ -412,7 +481,7 @@ export default function Portfolio() {
         </Section>
 
         {/* PROJECTS */}
-        <Section t={t} label="Projects" num="02">
+        <Section t={t} label="Projects" num="03">
           <div>
             {PROJECTS.slice(0,showAll?PROJECTS.length:4).map((p,i)=>(
               <ProjectRow
@@ -439,34 +508,6 @@ export default function Portfolio() {
               {showAll?'↑ Show less':`Show all ${PROJECTS.length} projects →`}
             </motion.button>
           </div>
-        </Section>
-
-        {/* STACK */}
-        <Section t={t} label="Stack" num="03">
-          <motion.div
-            initial="h" whileInView="v" viewport={{once:true}}
-            variants={{v:{transition:{staggerChildren:.04}},h:{}}}
-            style={{display:'flex',flexWrap:'wrap',gap:8}}
-          >
-            {TOOLS.map(({name,Icon,color})=>(
-              <motion.div
-                key={name}
-                variants={{h:{opacity:0,scale:.82,y:8},v:{opacity:1,scale:1,y:0}}}
-                whileHover={{scale:1.07,y:-2}}
-                style={{
-                  display:'flex',alignItems:'center',gap:7,
-                  padding:'8px 14px',borderRadius:8,
-                  border:`1px solid ${t.border}`,background:t.surface,
-                  fontSize:13,fontWeight:600,color:t.mutedText,
-                  cursor:'none',transition:'all .2s',
-                }}
-                onMouseEnter={e=>{e.currentTarget.style.color=t.text;e.currentTarget.style.borderColor=color+'44';}}
-                onMouseLeave={e=>{e.currentTarget.style.color=t.mutedText;e.currentTarget.style.borderColor=t.border;}}
-              >
-                <Icon size={15} color={color}/>{name}
-              </motion.div>
-            ))}
-          </motion.div>
         </Section>
 
         {/* RECOGNITION */}
@@ -545,15 +586,23 @@ export default function Portfolio() {
               >
                 <Mail size={15}/>faizannasim59@gmail.com<ArrowUpRight size={14}/>
               </motion.a>
-              <motion.a
+             <motion.a
                 href="https://www.linkedin.com/in/faizan-nasim-2262a930a/"
                 target="_blank" rel="noopener noreferrer"
-                whileHover={{scale:1.03,borderColor:t.borderStrong}}
+                whileHover={{
+                  scale: 1.03, 
+                  borderColor: t.accent, 
+                  background: t.accentDim, 
+                  color: t.text
+                }}
                 style={{
                   display:'inline-flex',alignItems:'center',gap:8,
-                  padding:'14px 22px',borderRadius:10,
-                  border:`1px solid ${t.border}`,color:t.mutedText,
-                  fontSize:14,fontWeight:700,cursor:'none',transition:'all .2s',
+                  padding:'14px 22px',borderRadius:10, // Email button se match karne ke liye border-radius 10 rakha hai
+                  border:`1px solid ${t.borderStrong}`, // Border thoda sharp kiya hai
+                  background: t.surface, // Background solid kar diya taaki chhipe na
+                  color: t.text, // Muted text ki jagah proper bright text
+                  fontSize:14,fontWeight:700,cursor:'none',
+                  transition:'all .2s ease',
                 }}
               >
                 <Linkedin size={15}/>LinkedIn
@@ -584,7 +633,8 @@ export default function Portfolio() {
         </section>
 
         <footer style={{
-          paddingBottom:48,borderTop:`1px solid ${t.border}`,paddingTop:24,
+          paddingBottom:120, // INCREASED BOTTOM PADDING TO AVOID DOCK OVERLAP
+          borderTop:`1px solid ${t.border}`,paddingTop:24,
           display:'flex',justifyContent:'space-between',alignItems:'center',flexWrap:'wrap',gap:12,
         }}>
           <p className="mono" style={{fontSize:11,color:t.mutedText}}>© {new Date().getFullYear()} Faizan Nasim</p>
@@ -615,81 +665,161 @@ function Section({t,label,num,children}){
   );
 }
 
-function ProjectRow({p,i,t,hovered,onEnter,onLeave}){
-  return(
+export function ProjectRow({ p, i, t }) {
+  const [isHovered, setIsHovered] = useState(false);
+  const hasImg = !!p.img;
+
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const springConfig = { stiffness: 250, damping: 25, mass: 0.5 };
+  const mouseX = useSpring(x, springConfig);
+  const mouseY = useSpring(y, springConfig);
+
+  const handleMouseEnter = (e) => {
+    setIsHovered(true);
+    x.jump(e.clientX - 160); 
+    y.jump(e.clientY - 100); 
+  };
+
+  const handleMouseMove = (e) => {
+    x.set(e.clientX - 160);
+    y.set(e.clientY - 100);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+
+  return (
     <motion.div
-      initial={{opacity:0,y:14}} whileInView={{opacity:1,y:0}}
-      viewport={{once:true}}
-      transition={{delay:i*.05,duration:.55,ease:[.22,1,.36,1]}}
-      onMouseEnter={onEnter} onMouseLeave={onLeave}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ delay: i * 0.05, duration: 0.5 }}
+      onMouseEnter={handleMouseEnter}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
       style={{
-        display:'grid',gridTemplateColumns:'56px 1fr auto',gap:22,
-        padding:'22px 0',borderBottom:`1px solid ${t.border}`,
-        paddingLeft:hovered?14:0,
-        borderLeft:`2px solid ${hovered?t.accent:'transparent'}`,
-        transition:'padding-left .2s,border-color .2s',
-        alignItems:'start',
+        padding: '32px 0',
+        borderBottom: `1px solid ${t.border}`,
+        position: 'relative',
+        cursor: 'none',
       }}
     >
-      <span className="clash" style={{
-        fontSize:36,color:hovered?t.accent:t.muted,
-        lineHeight:1,transition:'color .2s',paddingTop:3,
-      }}>{p.n}</span>
-
-      <div>
-        <div style={{display:'flex',alignItems:'baseline',gap:9,marginBottom:8,flexWrap:'wrap'}}>
-          <h3 style={{fontSize:18,fontWeight:800,color:t.text,letterSpacing:'-.01em'}}>{p.title}</h3>
-          <span style={{fontSize:13,color:t.mutedText,fontWeight:500}}>{p.sub}</span>
-          {p.featured&&(
-            <span className="mono" style={{
-              fontSize:9,padding:'2px 7px',borderRadius:99,
-              background:t.accentDim,border:`1px solid ${t.accentBorder}`,
-              color:t.accent,letterSpacing:'.06em',textTransform:'uppercase',
-            }}>Featured</span>
-          )}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 16 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
+          <span className="mono" style={{ fontSize: '14px', color: isHovered ? t.accent : t.mutedText, transition: 'color 0.3s' }}>
+            {p.n}
+          </span>
+          <h3 
+            className="clash"
+            style={{ 
+              fontSize: 'clamp(32px, 5vw, 64px)', 
+              fontWeight: 800, 
+              color: isHovered ? t.text : t.dim, 
+              letterSpacing: '-0.02em', 
+              transition: 'color 0.4s ease',
+              margin: 0,
+              lineHeight: 1
+            }}
+          >
+            {p.title}
+          </h3>
         </div>
-        <AnimatePresence>
-          {hovered&&(
-            <motion.p
-              initial={{opacity:0,height:0,marginBottom:0}}
-              animate={{opacity:1,height:'auto',marginBottom:10}}
-              exit={{opacity:0,height:0,marginBottom:0}}
-              transition={{duration:.2}}
-              style={{fontSize:13,color:t.dim,lineHeight:1.7,overflow:'hidden'}}
-            >{p.desc}</motion.p>
-          )}
-        </AnimatePresence>
-        <div style={{display:'flex',gap:5,flexWrap:'wrap'}}>
-          {p.stack.map(s=>(
-            <span key={s} className="mono" style={{
-              fontSize:10,padding:'3px 8px',borderRadius:5,
-              background:t.tag,color:t.tagText,
-            }}>{s}</span>
-          ))}
+
+        <div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
+          <AnimatePresence mode="wait">
+            {!isHovered ? (
+              <motion.span 
+                key="year"
+                initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -10 }}
+                transition={{ duration: 0.2 }}
+                className="mono" style={{ fontSize: '14px', color: t.mutedText }}
+              >
+                {p.year}
+              </motion.span>
+            ) : (
+              <motion.div 
+                key="links"
+                initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 10 }}
+                transition={{ duration: 0.2 }}
+                style={{ display: 'flex', gap: 16 }}
+              >
+                <a href={p.gh} target="_blank" rel="noopener noreferrer" style={{ color: t.text }}><Github size={24} /></a>
+                {p.live !== '#' && <a href={p.live} target="_blank" rel="noopener noreferrer" style={{ color: t.accent }}><ExternalLink size={24} /></a>}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
 
-      <div style={{display:'flex',flexDirection:'column',alignItems:'flex-end',gap:10}}>
-        <span className="mono" style={{fontSize:10,color:t.mutedText}}>{p.year}</span>
-        {p.kpi&&(
-          <div style={{textAlign:'right'}}>
-            <div className="clash" style={{fontSize:26,color:t.accent,lineHeight:1,letterSpacing:'-.01em'}}>{p.kpi}</div>
-            <div className="mono" style={{fontSize:9,color:t.mutedText,marginTop:2}}>{p.kpiLabel}</div>
-          </div>
+      <AnimatePresence>
+        {isHovered && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            style={{ overflow: 'hidden' }}
+          >
+            <div style={{ paddingLeft: '50px', paddingTop: '16px', maxWidth: '650px' }}>
+              <p style={{ fontSize: '16px', color: t.dim, lineHeight: 1.6, marginBottom: '20px' }}>
+                <span style={{ color: t.text, fontWeight: 600 }}>{p.sub} — </span>{p.desc}
+              </p>
+              <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                {p.kpi && (
+                  <span className="mono" style={{ fontSize: '11px', padding: '6px 12px', borderRadius: '4px', background: t.text, color: t.bg, fontWeight: 800 }}>
+                    {p.kpi} {p.kpiLabel}
+                  </span>
+                )}
+                {p.stack.map(s => (
+                  <span key={s} className="mono" style={{ fontSize: '11px', padding: '5px 12px', borderRadius: '4px', border: `1px solid ${t.borderStrong}`, color: t.mutedText }}>
+                    {s}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </motion.div>
         )}
-        <div style={{display:'flex',gap:9}}>
-          <motion.a href={p.gh} target="_blank" rel="noopener noreferrer"
-            whileHover={{scale:1.15,color:t.text}}
-            style={{color:t.mutedText,cursor:'none',transition:'color .2s'}}>
-            <Github size={14}/>
-          </motion.a>
-          <motion.a href={p.live} target="_blank" rel="noopener noreferrer"
-            whileHover={{scale:1.15,color:t.accent}}
-            style={{color:t.mutedText,cursor:'none',transition:'color .2s'}}>
-            <ExternalLink size={14}/>
-          </motion.a>
-        </div>
-      </div>
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {isHovered && hasImg && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.2, rotate: -10 }} 
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            exit={{ opacity: 0, scale: 0.8, rotate: 5 }}
+            transition={{ type: "spring", stiffness: 300, damping: 25 }}
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              x: mouseX,
+              y: mouseY,
+              width: '320px',
+              height: '200px',
+              borderRadius: '12px',
+              overflow: 'hidden',
+              pointerEvents: 'none', 
+              zIndex: 9999, 
+              boxShadow: '0 25px 50px -12px rgba(0,0,0,0.5)',
+              border: `1px solid ${t.borderStrong}`,
+              transformOrigin: 'center center', 
+            }}
+          >
+            <motion.img 
+              initial={{ scale: 1.2 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 1.2 }}
+              transition={{ duration: 0.4 }}
+              src={p.img} 
+              alt={p.title} 
+              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} 
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 }
