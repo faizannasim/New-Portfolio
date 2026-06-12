@@ -1,13 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Github, Linkedin, Mail, Twitter, ExternalLink, Moon, Sun, ArrowUpRight } from 'lucide-react';
 import { FaHtml5, FaCss3Alt, FaReact, FaGitAlt } from 'react-icons/fa';
-import { SiFramer, SiJavascript, SiTailwindcss, SiPostman, SiBootstrap, SiNextdotjs, SiPython ,SiFastapi} from 'react-icons/si';
+import { SiFramer, SiJavascript, SiTailwindcss, SiPostman, SiBootstrap, SiNextdotjs, SiPython, SiFastapi } from 'react-icons/si';
 import { AiOutlineLock, AiOutlineThunderbolt, AiOutlineApi } from 'react-icons/ai';
 import { MdPhoneIphone } from 'react-icons/md';
 import { BsYoutube } from 'react-icons/bs';
-import { motion, AnimatePresence } from 'framer-motion';
-
-import { useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
 
 const T = {
   dark: {
@@ -52,7 +50,6 @@ const TOOLS = [
   { name: 'JavaScript', Icon: SiJavascript, color: '#F7DF1E' },
   { name: 'Python', Icon: SiPython, color: '#3776AB' },
   { name: 'FastAPI', Icon: SiFastapi, color: '#00CC00' },
-
   { name: 'React.js', Icon: FaReact, color: '#61DAFB' },
   { name: 'Next.js', Icon: SiNextdotjs, color: '#888' },
   { name: 'Tailwind CSS', Icon: SiTailwindcss, color: '#06B6D4' },
@@ -69,21 +66,21 @@ const TOOLS = [
 const PROJECTS = [
   {
     n: '01', title: 'BillMate', sub: 'Invoice Maker', year: '2024',
-    desc: 'Responsive invoice platform with PDF export, QR code, and hands-free voice via Web Speech API. 100/100 Best Practices on Lighthouse.',
+    desc: 'Responsive invoice platform with PDF export, QR code, and hands-free voice via Web Speech API.',
     stack: ['React', 'Tailwind', 'Web Speech API', 'Clarity'],
     gh: 'https://github.com/faizannasim/BillMate.git',
     live: 'https://bill-mate-iota.vercel.app/',
-    kpi: '100', kpiLabel: 'Lighthouse', featured: true,
-    img: '/bill.png'
+    kpi: '100', kpiLabel: 'Lighthouse',
+    img: '/bill.png',
   },
   {
     n: '02', title: 'Ask AI', sub: 'Chat App', year: '2024',
     desc: 'Real-time AI chat with persistent history and Google Gemini API. 89 Accessibility score on Lighthouse.',
     stack: ['React', 'Tailwind', 'Gemini API'],
     gh: 'https://github.com/faizannasim',
-    live: '#',
+    live: null,
     kpi: '89', kpiLabel: 'Accessibility',
-     img: '/ask.png'
+    img: '/ask.png',
   },
   {
     n: '03', title: 'F1 Arena', sub: 'F1 Dashboard', year: '2024',
@@ -92,9 +89,8 @@ const PROJECTS = [
     gh: 'https://github.com/faizannasim/F1Arena.git',
     live: 'https://formula-1-2e81.vercel.app/',
     kpi: '1K+', kpiLabel: 'Data Points',
-     img: '/f1.png'
+    img: '/f1.png',
   },
-  
   {
     n: '04', title: 'Portfolio', sub: 'Personal Site', year: '2024',
     desc: 'Fully responsive portfolio with animated UI, mobile-first design. Deployed on Vercel.',
@@ -102,7 +98,7 @@ const PROJECTS = [
     gh: 'https://github.com/faizannasim/Faizan-Web.git',
     live: 'https://faizanwebbb.netlify.app/',
     kpi: '94', kpiLabel: 'Accessibility',
-     img: '/Port.png'
+    img: '/Port.png',
   },
   {
     n: '05', title: 'SecureSignIn', sub: 'Auth System', year: '2023',
@@ -110,8 +106,8 @@ const PROJECTS = [
     stack: ['React', 'React Router', 'Tailwind'],
     gh: 'https://github.com/faizannasim/SecureSignIn.git',
     live: 'https://login-auth-wine.vercel.app/',
-     img: '/Login.png',
     kpi: null,
+    img: '/Login.png',
   },
   {
     n: '06', title: 'CU Clone', sub: 'Frontend Replica', year: '2023',
@@ -120,14 +116,12 @@ const PROJECTS = [
     gh: 'https://github.com/faizannasim/chandigarh-university.git',
     live: 'https://chandigarh-university.vercel.app/',
     kpi: null,
-     img: '/cg.png'
+    img: '/cg.png',
   },
 ];
 
 export default function Portfolio() {
   const [dark, setDark] = useState(true);
-  const [showAll, setShowAll] = useState(false);
-  const [hovPrj, setHovPrj] = useState(null);
   const t = T[dark ? 'dark' : 'light'];
 
   const mx = useMotionValue(-200);
@@ -210,7 +204,6 @@ export default function Portfolio() {
           zIndex: 500,
         }}
       >
-       
       </motion.div>
 
       {/* ───────── FLOATING BOTTOM DOCK ───────── */}
@@ -274,7 +267,6 @@ export default function Portfolio() {
         ref={heroRef}
         style={{
           y:heroParallax,opacity:heroFade,
-          // 👇 IS LINE KO CHANGE KARO (140px se 80px kar diya hai)
           paddingTop:'clamp(80px, 8vw, 120px)', 
           paddingBottom:'clamp(80px,10vw,140px)',
           paddingLeft:'clamp(20px,4vw,56px)',
@@ -282,7 +274,6 @@ export default function Portfolio() {
           maxWidth:1100,margin:'0 auto',
           position:'relative',zIndex:1,
         }}
-      
       >
         {/* pill badge */}
         <motion.div
@@ -359,12 +350,10 @@ export default function Portfolio() {
         </motion.div>
 
         {/* social row */}
-        {/* social row */}
-        {/* social row */}
         <motion.div
           initial={{opacity:0,y:10}} animate={{opacity:1,y:0}}
           transition={{delay:.55,duration:.55}}
-          style={{display:'flex',gap:12,flexWrap:'wrap'}} // Gap thoda badhaya hai
+          style={{display:'flex',gap:12,flexWrap:'wrap'}}
         >
           {[
             {Icon:Github,href:'https://github.com/faizannasim',label:'GitHub'},
@@ -377,17 +366,17 @@ export default function Portfolio() {
               key={label} href={href} target="_blank" rel="noopener noreferrer"
               whileHover={{
                 scale: 1.05, 
-                borderColor: t.accent, // Hover pe border accent color ka hoga
-                background: t.accentDim, // Hover pe slight accent background
+                borderColor: t.accent, 
+                background: t.accentDim, 
                 color: t.text
               }}
               style={{
                 display:'flex',alignItems:'center',gap:8,
-                padding:'10px 18px', // Padding thodi badhai hai for bigger click area
-                border:`1px solid ${t.borderStrong}`, // Border thoda visible banaya hai
-                borderRadius: 99, // Pill shape
-                background: t.surface, // Buttons pop out honge background se
-                fontSize: 14, fontWeight: 700, color: t.text, // Text bright kiya hai
+                padding:'10px 18px',
+                border:`1px solid ${t.borderStrong}`,
+                borderRadius: 99,
+                background: t.surface,
+                fontSize: 14, fontWeight: 700, color: t.text,
                 cursor:'none',
                 transition:'all .2s ease',
               }}
@@ -480,35 +469,8 @@ export default function Portfolio() {
           </motion.div>
         </Section>
 
-        {/* PROJECTS */}
-        <Section t={t} label="Projects" num="03">
-          <div>
-            {PROJECTS.slice(0,showAll?PROJECTS.length:4).map((p,i)=>(
-              <ProjectRow
-                key={p.title} p={p} i={i} t={t}
-                hovered={hovPrj===i}
-                onEnter={()=>setHovPrj(i)}
-                onLeave={()=>setHovPrj(null)}
-              />
-            ))}
-          </div>
-          <div style={{marginTop:20}}>
-            <motion.button
-              onClick={()=>setShowAll(!showAll)}
-              whileHover={{scale:1.02,borderColor:t.borderStrong}}
-              whileTap={{scale:.97}}
-              style={{
-                display:'inline-flex',alignItems:'center',gap:8,
-                padding:'9px 18px',border:`1px solid ${t.border}`,borderRadius:8,
-                background:'transparent',color:t.mutedText,fontSize:12,
-                cursor:'none',fontFamily:"'Cabinet Grotesk',sans-serif",fontWeight:600,
-                transition:'all .2s',
-              }}
-            >
-              {showAll?'↑ Show less':`Show all ${PROJECTS.length} projects →`}
-            </motion.button>
-          </div>
-        </Section>
+        {/* PROJECTS SECTION */}
+        <ProjectsSection t={t} />
 
         {/* RECOGNITION */}
         <Section t={t} label="Recognition" num="04">
@@ -597,10 +559,10 @@ export default function Portfolio() {
                 }}
                 style={{
                   display:'inline-flex',alignItems:'center',gap:8,
-                  padding:'14px 22px',borderRadius:10, // Email button se match karne ke liye border-radius 10 rakha hai
-                  border:`1px solid ${t.borderStrong}`, // Border thoda sharp kiya hai
-                  background: t.surface, // Background solid kar diya taaki chhipe na
-                  color: t.text, // Muted text ki jagah proper bright text
+                  padding:'14px 22px',borderRadius:10, 
+                  border:`1px solid ${t.borderStrong}`, 
+                  background: t.surface, 
+                  color: t.text, 
                   fontSize:14,fontWeight:700,cursor:'none',
                   transition:'all .2s ease',
                 }}
@@ -633,7 +595,7 @@ export default function Portfolio() {
         </section>
 
         <footer style={{
-          paddingBottom:120, // INCREASED BOTTOM PADDING TO AVOID DOCK OVERLAP
+          paddingBottom:120,
           borderTop:`1px solid ${t.border}`,paddingTop:24,
           display:'flex',justifyContent:'space-between',alignItems:'center',flexWrap:'wrap',gap:12,
         }}>
@@ -665,161 +627,297 @@ function Section({t,label,num,children}){
   );
 }
 
-export function ProjectRow({ p, i, t }) {
-  const [isHovered, setIsHovered] = useState(false);
-  const hasImg = !!p.img;
+export function ProjectsSection({ t }) {
+  const [openIdx, setOpenIdx] = useState(null);
 
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
+  const toggle = (i) => setOpenIdx(prev => prev === i ? null : i);
 
-  const springConfig = { stiffness: 250, damping: 25, mass: 0.5 };
-  const mouseX = useSpring(x, springConfig);
-  const mouseY = useSpring(y, springConfig);
+  return (
+    <section style={{ marginBottom: 100 }}>
+      {/* Section header */}
+      <motion.div
+        initial={{ opacity: 0, x: -12 }} whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }} transition={{ duration: 0.5 }}
+        style={{
+          display: 'flex', alignItems: 'center', gap: 14,
+          marginBottom: 0, paddingBottom: 20,
+          borderBottom: `1px solid ${t.border}`,
+        }}
+      >
+        <span className="mono" style={{ fontSize: 10, color: t.mutedText }}>03</span>
+        <span className="mono" style={{
+          fontSize: 10, letterSpacing: '.15em', textTransform: 'uppercase', color: t.accent,
+        }}>Projects</span>
+        <div style={{ flex: 1, height: 1, background: t.border }} />
+        <span className="mono" style={{ fontSize: 10, color: t.mutedText }}>
+          {PROJECTS.length} works
+        </span>
+      </motion.div>
 
-  const handleMouseEnter = (e) => {
-    setIsHovered(true);
-    x.jump(e.clientX - 160); 
-    y.jump(e.clientY - 100); 
-  };
+      {/* Project rows */}
+      <div>
+        {PROJECTS.map((p, i) => (
+          <ProjectRow
+            key={p.title}
+            p={p} i={i} t={t}
+            isOpen={openIdx === i}
+            onToggle={() => toggle(i)}
+          />
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function ProjectRow({ p, i, t, isOpen, onToggle }) {
+  const rowRef = useRef(null);
+  const imgRef = useRef(null);
+  const [hov, setHov] = useState(false);
+
+  const titleHalf = Math.ceil(p.title.length / 2);
+  const t1 = p.title.slice(0, titleHalf);
+  const t2 = p.title.slice(titleHalf);
 
   const handleMouseMove = (e) => {
-    x.set(e.clientX - 160);
-    y.set(e.clientY - 100);
+    if (!imgRef.current || !rowRef.current) return;
+    const r = rowRef.current.getBoundingClientRect();
+    const y = (e.clientY - r.top) / r.height;
+    imgRef.current.style.transform = `translateY(${-y * 18}px)`;
   };
 
   const handleMouseLeave = () => {
-    setIsHovered(false);
+    setHov(false);
+    if (imgRef.current) imgRef.current.style.transform = 'translateY(0)';
   };
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      ref={rowRef}
+      initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ delay: i * 0.05, duration: 0.5 }}
-      onMouseEnter={handleMouseEnter}
+      viewport={{ once: true, margin: '-40px' }}
+      transition={{ delay: i * 0.06, duration: 0.5 }}
+      onMouseEnter={() => setHov(true)}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      onClick={onToggle}
       style={{
-        padding: '32px 0',
+        display: 'grid',
+        gridTemplateColumns: '48px 1fr 48px',
         borderBottom: `1px solid ${t.border}`,
         position: 'relative',
+        overflow: 'hidden',
         cursor: 'none',
       }}
     >
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 16 }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
-          <span className="mono" style={{ fontSize: '14px', color: isHovered ? t.accent : t.mutedText, transition: 'color 0.3s' }}>
-            {p.n}
-          </span>
-          <h3 
-            className="clash"
-            style={{ 
-              fontSize: 'clamp(32px, 5vw, 64px)', 
-              fontWeight: 800, 
-              color: isHovered ? t.text : t.dim, 
-              letterSpacing: '-0.02em', 
-              transition: 'color 0.4s ease',
-              margin: 0,
-              lineHeight: 1
-            }}
-          >
-            {p.title}
-          </h3>
-        </div>
+      {/* Hover background flash */}
+      <motion.div
+        animate={{ opacity: hov ? 0.035 : 0 }}
+        transition={{ duration: 0.3 }}
+        style={{
+          position: 'absolute', inset: 0,
+          background: t.accent,
+          pointerEvents: 'none', zIndex: 0,
+        }}
+      />
 
-        <div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
-          <AnimatePresence mode="wait">
-            {!isHovered ? (
-              <motion.span 
-                key="year"
-                initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -10 }}
-                transition={{ duration: 0.2 }}
-                className="mono" style={{ fontSize: '14px', color: t.mutedText }}
-              >
-                {p.year}
-              </motion.span>
-            ) : (
-              <motion.div 
-                key="links"
-                initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 10 }}
-                transition={{ duration: 0.2 }}
-                style={{ display: 'flex', gap: 16 }}
-              >
-                <a href={p.gh} target="_blank" rel="noopener noreferrer" style={{ color: t.text }}><Github size={24} /></a>
-                {p.live !== '#' && <a href={p.live} target="_blank" rel="noopener noreferrer" style={{ color: t.accent }}><ExternalLink size={24} /></a>}
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
+      {/* ── LEFT: Number column ── */}
+      <div style={{
+        borderRight: `1px solid ${t.border}`,
+        display: 'flex', alignItems: 'flex-start',
+        justifyContent: 'center', padding: '28px 0',
+        position: 'relative', zIndex: 1,
+      }}>
+        <span
+          className="mono"
+          style={{
+            fontSize: 9, color: hov ? t.accent : t.mutedText,
+            writingMode: 'vertical-rl', letterSpacing: '.12em',
+            transition: 'color 0.25s',
+          }}
+        >{p.n}</span>
       </div>
 
-      <AnimatePresence>
-        {isHovered && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            style={{ overflow: 'hidden' }}
-          >
-            <div style={{ paddingLeft: '50px', paddingTop: '16px', maxWidth: '650px' }}>
-              <p style={{ fontSize: '16px', color: t.dim, lineHeight: 1.6, marginBottom: '20px' }}>
-                <span style={{ color: t.text, fontWeight: 600 }}>{p.sub} — </span>{p.desc}
-              </p>
-              <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-                {p.kpi && (
-                  <span className="mono" style={{ fontSize: '11px', padding: '6px 12px', borderRadius: '4px', background: t.text, color: t.bg, fontWeight: 800 }}>
-                    {p.kpi} {p.kpiLabel}
-                  </span>
+      {/* ── MIDDLE: Main content ── */}
+      <div style={{ padding: '28px 32px 0', position: 'relative', zIndex: 1 }}>
+
+        {/* Title with dim-reveal second half */}
+        <div
+          className="clash"
+          style={{
+            fontSize: 'clamp(44px, 7vw, 88px)',
+            fontWeight: 700,
+            letterSpacing: hov ? '-0.025em' : '-0.04em',
+            lineHeight: 0.88,
+            color: '#fff',
+            transition: 'letter-spacing 0.5s cubic-bezier(0.22,1,0.36,1)',
+            userSelect: 'none',
+          }}
+        >
+          {t1}
+          <span style={{
+            color: hov ? 'rgba(255,255,255,0.65)' : 'rgba(255,255,255,0.12)',
+            transition: 'color 0.4s ease',
+          }}>{t2}</span>
+        </div>
+
+        {/* Sub label */}
+        <p
+          className="mono"
+          style={{
+            fontSize: 9, letterSpacing: '.12em', textTransform: 'uppercase',
+            color: hov ? t.accent : t.mutedText,
+            marginTop: 10, transition: 'color 0.3s',
+          }}
+        >{p.sub}</p>
+
+        {/* ── EXPAND SECTION ── */}
+        <motion.div
+          animate={{ height: isOpen ? 'auto' : 0, opacity: isOpen ? 1 : 0 }}
+          initial={{ height: 0, opacity: 0 }}
+          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+          style={{ overflow: 'hidden' }}
+        >
+          <div style={{ paddingBottom: 32, paddingTop: 24 }}>
+
+            {/* ── CINEMATIC IMAGE ── */}
+            <div style={{
+              width: '100%', height: 300,
+              overflow: 'hidden', position: 'relative',
+              marginBottom: 20,
+              border: `1px solid ${t.borderStrong}`,
+            }}>
+              <img
+                ref={imgRef}
+                src={p.img}
+                alt={p.title}
+                style={{
+                  width: '100%', height: '120%',
+                  objectFit: 'cover', objectPosition: 'top',
+                  display: 'block',
+                  filter: 'saturate(0.8) brightness(0.85)',
+                  transition: 'transform 0.1s linear, filter 0.5s ease',
+                }}
+              />
+
+              {/* Left-to-right gradient overlay */}
+              <div style={{
+                position: 'absolute', inset: 0,
+                background: 'linear-gradient(to right, rgba(8,8,8,0.9) 0%, rgba(8,8,8,0.45) 45%, rgba(8,8,8,0.1) 100%)',
+                display: 'flex', flexDirection: 'column',
+                justifyContent: 'flex-end', padding: '28px 32px',
+              }}>
+                <p style={{
+                  fontSize: 14, color: 'rgba(255,255,255,0.55)',
+                  lineHeight: 1.75, maxWidth: 480, fontWeight: 400,
+                  position: 'relative', zIndex: 1,
+                }}>{p.desc}</p>
+              </div>
+
+              {/* Bottom fade */}
+              <div style={{
+                position: 'absolute', left: 0, right: 0, bottom: 0, height: 80,
+                background: 'linear-gradient(to top, rgba(8,8,8,0.95), transparent)',
+                pointerEvents: 'none',
+              }} />
+
+              {/* KPI top-right overlay */}
+              {p.kpi && (
+                <div style={{
+                  position: 'absolute', top: 20, right: 20, textAlign: 'right',
+                }}>
+                  <span className="clash" style={{
+                    fontSize: 'clamp(36px,5vw,56px)', fontWeight: 700,
+                    color: t.accent, lineHeight: 1, letterSpacing: '-.03em',
+                    display: 'block',
+                  }}>{p.kpi}</span>
+                  <span className="mono" style={{
+                    fontSize: 9, color: `${t.accent}77`,
+                    letterSpacing: '.15em', textTransform: 'uppercase',
+                  }}>{p.kpiLabel}</span>
+                </div>
+              )}
+            </div>
+
+            {/* ── FOOTER: stack + links ── */}
+            <div style={{
+              display: 'flex', alignItems: 'center',
+              gap: 8, flexWrap: 'wrap',
+            }}>
+              {p.stack.map(s => (
+                <span key={s} className="mono" style={{
+                  fontSize: 9, padding: '4px 10px',
+                  border: `1px solid ${t.borderStrong}`,
+                  color: t.mutedText, letterSpacing: '.04em',
+                }}>{s}</span>
+              ))}
+
+              <div style={{ marginLeft: 'auto', display: 'flex', gap: 8 }}>
+                <a
+                  href={p.gh} target="_blank" rel="noopener noreferrer"
+                  onClick={e => e.stopPropagation()}
+                  className="mono"
+                  style={{
+                    fontSize: 9, letterSpacing: '.1em', textDecoration: 'none',
+                    padding: '6px 14px', border: `1px solid ${t.borderStrong}`,
+                    color: t.mutedText, textTransform: 'uppercase',
+                    display: 'flex', alignItems: 'center', gap: 5,
+                    transition: 'all 0.2s',
+                  }}
+                  onMouseEnter={e => { e.currentTarget.style.borderColor = '#fff'; e.currentTarget.style.color = '#fff'; }}
+                  onMouseLeave={e => { e.currentTarget.style.borderColor = t.borderStrong; e.currentTarget.style.color = t.mutedText; }}
+                >
+                  <Github size={11} /> GitHub
+                </a>
+
+                {p.live && (
+                  <a
+                    href={p.live} target="_blank" rel="noopener noreferrer"
+                    onClick={e => e.stopPropagation()}
+                    className="mono"
+                    style={{
+                      fontSize: 9, letterSpacing: '.1em', textDecoration: 'none',
+                      padding: '6px 14px', border: `1px solid ${t.accent}`,
+                      color: t.accent, textTransform: 'uppercase',
+                      display: 'flex', alignItems: 'center', gap: 5,
+                      transition: 'all 0.2s',
+                    }}
+                    onMouseEnter={e => { e.currentTarget.style.background = t.accent; e.currentTarget.style.color = '#000'; }}
+                    onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = t.accent; }}
+                  >
+                    <ExternalLink size={11} /> Live
+                  </a>
                 )}
-                {p.stack.map(s => (
-                  <span key={s} className="mono" style={{ fontSize: '11px', padding: '5px 12px', borderRadius: '4px', border: `1px solid ${t.borderStrong}`, color: t.mutedText }}>
-                    {s}
-                  </span>
-                ))}
               </div>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </div>
+        </motion.div>
+      </div>
 
-      <AnimatePresence>
-        {isHovered && hasImg && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.2, rotate: -10 }} 
-            animate={{ opacity: 1, scale: 1, rotate: 0 }}
-            exit={{ opacity: 0, scale: 0.8, rotate: 5 }}
-            transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            style={{
-              position: 'fixed',
-              top: 0,
-              left: 0,
-              x: mouseX,
-              y: mouseY,
-              width: '320px',
-              height: '200px',
-              borderRadius: '12px',
-              overflow: 'hidden',
-              pointerEvents: 'none', 
-              zIndex: 9999, 
-              boxShadow: '0 25px 50px -12px rgba(0,0,0,0.5)',
-              border: `1px solid ${t.borderStrong}`,
-              transformOrigin: 'center center', 
-            }}
-          >
-            <motion.img 
-              initial={{ scale: 1.2 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 1.2 }}
-              transition={{ duration: 0.4 }}
-              src={p.img} 
-              alt={p.title} 
-              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} 
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* ── RIGHT: Year + toggle ── */}
+      <div style={{
+        borderLeft: `1px solid ${t.border}`,
+        display: 'flex', flexDirection: 'column',
+        alignItems: 'center', justifyContent: 'flex-start',
+        padding: '28px 0', gap: 16,
+        position: 'relative', zIndex: 1,
+      }}>
+        <span className="mono" style={{
+          fontSize: 9, color: t.mutedText,
+          writingMode: 'vertical-rl', letterSpacing: '.12em',
+        }}>{p.year}</span>
+
+        <motion.div
+          animate={{ rotate: isOpen ? 45 : 0, borderColor: isOpen ? t.accent : t.border, color: isOpen ? t.accent : t.mutedText }}
+          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          style={{
+            width: 22, height: 22,
+            border: `1px solid ${t.border}`,
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            fontSize: 13, color: t.mutedText, fontFamily: 'monospace',
+          }}
+        >+</motion.div>
+      </div>
     </motion.div>
   );
 }
