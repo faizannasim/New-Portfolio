@@ -39,6 +39,44 @@ const RECOGNITION = [
   { title: 'Generative AI certificate', desc: 'Microsoft and LinkedIn: prompt engineering and applied GenAI', year: '2024' },
 ];
 
+/* ─── Experience groups (future companies me bhi same structure use karo) ─── */
+const EXPERIENCE = [
+  {
+    company: 'GEDU Services',
+    logo: 'G',
+    role: 'Associate Frontend Developer',
+    date: 'Dec 2025 — Present',
+    location: 'Noida, India',
+    current: true,
+    groups: [
+      {
+        title: 'Multi-Role Dashboards & Brand Management',
+        color: 'accent',
+        bullets: [
+          <>Developed <b>10+ responsive pages</b> across multi-role dashboards (Student, Admin, Instructor) in React.js integrated with REST APIs, optimizing data-fetching logic to improve <b>page load speed by 30%</b>.</>,
+          <>Designed a secure <b>Brand Management portal</b> enforcing strict Role-Based Access Control (RBAC) to restrict university onboarding to Super Admin users, strengthening platform security and data integrity.</>,
+        ],
+      },
+      {
+        title: 'Refund Tracking & Reporting Modules',
+        color: 'warm',
+        bullets: [
+  <>Built a <b>Refund Tracking module</b> integrated with backend APIs to surface real-time status across a sequential approval workflow (starting from step 1 post-initiation), showing approver identity, remarks, and timestamps at every stage for full audit visibility.</>,
+  <>Developed a <b>Reporting module</b> integrated with backend APIs to consolidate user details across all roles into a single view, complete with one-click Excel export for audits and offline analysis.</>,
+]
+      },
+      {
+        title: 'Platform-Wide Optimization & QA',
+        color: 'mint',
+        bullets: [
+          <>Resolved critical UI and data-flow issues platform-wide, reducing <b>reported bugs by 40%</b> across 3 distinct user roles.</>,
+        ],
+      },
+    ],
+  },
+  // 👇 Future companies: same structure add karo (groups optional)
+];
+
 const AI_TAGS = [
   { name: 'LangChain',          c: '#5EEBB0', w: 3 },
   { name: 'RAG',                c: '#A78BFA', w: 3 },
@@ -252,21 +290,18 @@ export default function Portfolio() {
     .nav-links a.on{background:${t.surface2};color:${t.text}}
     @media(max-width:1020px){.nav-links{display:none}}
 
-    .nav-pill{display:flex;align-items:center;gap:4px;padding:4px 4px 4px 14px;border-radius:99px;
-      background:${t.surface2};border:1px solid ${t.border}}
-    @media(max-width:520px){.nav-status{display:none}.nav-pill{padding-left:8px}}
-    .nav-status{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;color:${t.dim};padding-right:12px;border-right:1px solid ${t.borderStrong};letter-spacing:.01em}
-    .nav-status-dot{width:7px;height:7px;border-radius:50%;background:${t.mint};box-shadow:0 0 10px ${t.mint};animation:pulseDot 2s infinite}
-    .nav-theme{width:34px;height:34px;border-radius:50%;border:none;background:transparent;color:${t.dim};display:grid;place-items:center;cursor:pointer;transition:transform .3s cubic-bezier(.22,1,.36,1),background .25s,color .25s}
-    .nav-theme:hover{background:${t.surface};color:${t.text};transform:rotate(45deg)}
     .nav-resume{display:inline-flex;align-items:center;gap:7px;padding:9px 16px;border-radius:99px;font-size:13px;font-weight:700;
       background:${t.surface};color:${t.text};border:1px solid ${t.borderStrong};text-decoration:none;
       transition:transform .25s cubic-bezier(.22,1,.36,1),background .25s,border-color .25s,box-shadow .3s}
     .nav-resume:hover{transform:translateY(-1px);background:${t.surface2};border-color:${t.accent}88;box-shadow:0 10px 22px -10px ${t.accent}66}
 
-    .split{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(28px,5vw,80px);align-items:start}
+    .split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,64px);align-items:start}
     @media(max-width:860px){.split{grid-template-columns:1fr}.sticky-l{position:static!important}}
     .row{display:flex;align-items:baseline;justify-content:space-between;gap:20px;padding:26px 0;border-top:1px solid ${t.border}}
+    .exp-card{transition:border-color .3s, box-shadow .3s}
+    .exp-card:hover{border-color:${t.accent}55;box-shadow:0 20px 44px -30px rgba(0,0,0,.6)}
+    .rec-card{transition:border-color .3s, transform .3s}
+    .rec-card:hover{border-color:${t.warm}55;transform:translateY(-2px)}
     .pcard{display:grid;grid-template-columns:1.15fr 1fr;width:100%;height:min(76vh,620px);border-radius:32px;overflow:hidden;border:1px solid ${t.borderStrong};background:${t.surface};box-shadow:0 44px 90px -44px rgba(0,0,0,.85), 0 0 0 1px ${t.border}, inset 0 1px 0 ${t.borderStrong}}
     @media(max-width:860px){.pcard{grid-template-columns:1fr;grid-template-rows:38% 1fr;height:min(84vh,680px);border-radius:24px}}
     .pcard img{transition:transform .9s cubic-bezier(.22,1,.36,1)}
@@ -439,17 +474,9 @@ export default function Portfolio() {
             ))}
           </nav>
 
-        
-            {/* <span className="nav-status"><span className="nav-status-dot" />Available</span>
-            <button onClick={() => setDark(!dark)} aria-label={dark ? 'Switch to light theme' : 'Switch to dark theme'} className="nav-theme">
-              {dark ? <Sun size={15} /> : <Moon size={15} />}
-            </button> */}
-           
-          {/* </div> */}
           <a href="https://drive.google.com/file/d/1fjrdhe3k8yrxq8kD_gFdiGlL2OFNoz71/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="nav-resume">
-              Resume <ArrowUpRight size={13} />
-            </a>
-           
+            Resume <ArrowUpRight size={13} />
+          </a>
         </div>
       </header>
 
@@ -457,58 +484,208 @@ export default function Portfolio() {
         <Hero t={t} />
         <BandMarquee t={t} items={['Frontend developer', 'AI engineer', 'React', 'Python']} dir={1} />
 
+        ═══════════════ EXPERIENCE ═══════════════
         <section id="experience" className="sec">
           <div className="wrap split">
+            {/* LEFT: heading */}
             <div className="sticky-l" style={{ position: 'sticky', top: 110 }}>
               <Reveal><h2 className="h2">Where I <i>work</i> now</h2></Reveal>
-              <Reveal delay={0.1}>
-                <div style={{ marginTop: 32 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
-                    <span className="serif" style={{ fontSize: 'clamp(30px,3.4vw,44px)', lineHeight: 1 }}>GEDU Services</span>
-                   
-                  </div>
-                   {/* <span style={{ display: 'inline-flex', alignItems: 'center', gap: 7, fontSize: 12, fontWeight: 600, padding: '4px 11px', borderRadius: 99, color: t.mint, border: `1px solid ${t.mint}55` }}>
-                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: t.mint, animation: 'pulse 2s infinite' }} />Current role
-                    </span> */}
-                  <p style={{ fontSize: 17, fontWeight: 600, color: t.accent, marginTop: 10 }}>Associate Frontend Developer</p>
-                  <p className="mono" style={{ fontSize: 13, color: t.faint, marginTop: 4 }}>Dec 2025 to present</p>
+
+              {/* <Reveal delay={0.08}>
+                <p style={{
+                  marginTop: 20,
+                  fontSize: 14,
+                  lineHeight: 1.7,
+                  color: t.dim,
+                  maxWidth: 380,
+                }}>
+                  Currently building multi-role dashboards for a global education platform — focusing on clean data flows, secure access, and interfaces that scale.
+                </p>
+              </Reveal> */}
+{/* 
+              <Reveal delay={0.12}>
+                <div style={{
+                  display: 'flex', gap: 10, flexWrap: 'wrap',
+                  marginTop: 24,
+                }}>
+                  {IMPACT.map((m) => (
+                    <div
+                      key={m.label}
+                      style={{
+                        display: 'flex', alignItems: 'center', gap: 10,
+                        padding: '10px 14px',
+                        borderRadius: 12,
+                        background: t.surface,
+                        border: `1px solid ${t.border}`,
+                      }}
+                    >
+                      <span className="serif grad" style={{
+                        fontSize: 24,
+                        lineHeight: 1,
+                        letterSpacing: '-.03em',
+                        flexShrink: 0,
+                      }}>
+                        <Count to={m.to} suffix="%" />
+                      </span>
+
+                      <div>
+                        <div style={{
+                          fontSize: 12, fontWeight: 600,
+                          color: t.text,
+                          letterSpacing: '-.005em',
+                          whiteSpace: 'nowrap',
+                        }}>
+                          {m.label}
+                        </div>
+                        <div style={{
+                          fontSize: 10,
+                          color: t.faint,
+                          marginTop: 1,
+                          whiteSpace: 'nowrap',
+                        }}>
+                          {m.note}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              </Reveal>
+              </Reveal> */}
             </div>
 
+            {/* RIGHT: experience cards */}
             <div>
-              <Reveal>
-                <p style={{ fontSize: 'clamp(22px,2.6vw,34px)', lineHeight: 1.35, fontWeight: 500, letterSpacing: '-.02em' }}>
-                  I build multi-role dashboards for students, admins and instructors. Faster pages, fewer bugs, and interfaces that hold up on every device.
-                </p>
-              </Reveal>
-              <div style={{ marginTop: 40 }}>
-                {IMPACT.map((m, i) => (
-                  <Reveal key={m.label} delay={i * 0.05}>
-                    <div className="row">
-                      <div>
-                        <div style={{ fontSize: 19, fontWeight: 600 }}>{m.label}</div>
-                        <div style={{ fontSize: 14, color: t.faint, marginTop: 2 }}>{m.note}</div>
-                      </div>
-                      <div className="serif grad" style={{ fontSize: 'clamp(56px,7vw,96px)', lineHeight: 0.9 }}><Count to={m.to} suffix="%" /></div>
+              {EXPERIENCE.map((exp, ei) => (
+                <Reveal key={exp.company} delay={ei * 0.08}>
+                  <div
+                    className="exp-card"
+                    style={{
+                      position: 'relative',
+                      padding: '16px 18px',
+                      borderRadius: 14,
+                      background: t.surface,
+                      border: `1px solid ${t.border}`,
+                      marginBottom: 14,
+                    }}
+                  >
+                    {/* Row 1: Logo + Company + Current + Location */}
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
+                      <div style={{
+                        width: 30, height: 30, borderRadius: 8,
+                        background: `linear-gradient(135deg, ${t.accent}, ${t.warm})`,
+                        display: 'grid', placeItems: 'center',
+                        color: t.accentInk,
+                        fontFamily: "'Instrument Serif', Georgia, serif",
+                        fontSize: 16, lineHeight: 1,
+                        flexShrink: 0,
+                      }}>{exp.logo}</div>
+
+                      <span style={{
+                        fontSize: 14.5, fontWeight: 700,
+                        letterSpacing: '-.01em',
+                        whiteSpace: 'nowrap',
+                      }}>
+                        {exp.company}
+                      </span>
+
+                      {exp.current && (
+                        <span style={{
+                          display: 'inline-flex', alignItems: 'center', gap: 4,
+                          padding: '2px 6px', borderRadius: 99,
+                          background: `${t.mint}18`,
+                          border: `1px solid ${t.mint}44`,
+                          fontSize: 8, fontWeight: 700,
+                          letterSpacing: '.06em', textTransform: 'uppercase',
+                          color: t.mint,
+                          whiteSpace: 'nowrap',
+                        }}>
+                          <span style={{
+                            width: 4, height: 4, borderRadius: '50%',
+                            background: t.mint,
+                            animation: 'pulseDot 2s infinite',
+                          }} />
+                          Now
+                        </span>
+                      )}
+
+                      <span className="mono" style={{
+                        marginLeft: 'auto',
+                        fontSize: 10.5, color: t.faint,
+                        whiteSpace: 'nowrap',
+                      }}>
+                        {exp.location}
+                      </span>
                     </div>
-                  </Reveal>
-                ))}
-              </div>
-              <Reveal>
-                <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', margin: '10px 0 44px' }}>
-                  {/* {['Student dashboard', 'Admin dashboard', 'Instructor dashboard', 'REST APIs', 'React'].map((c) => <span key={c} className="pill" style={{ color: t.dim }}>{c}</span>)} */}
-                </div>
-              </Reveal>
-              {RECOGNITION.map((r) => (
-                <Reveal key={r.title}>
-                  <div className="row">
-                    <div style={{ maxWidth: 420 }}>
-                      <div style={{ fontSize: 13, color: t.accent, fontWeight: 600, marginBottom: 4 }}>Recognition</div>
-                      <div style={{ fontSize: 19, fontWeight: 600 }}>{r.title}</div>
-                      <div style={{ fontSize: 14, color: t.dim, marginTop: 4, lineHeight: 1.55 }}>{r.desc}</div>
+
+                    {/* Row 2: Role · Date */}
+                    <div className="mono" style={{
+                      display: 'flex', alignItems: 'center', gap: 8,
+                      marginTop: 6, marginLeft: 40,
+                      fontSize: 10.5,
+                      flexWrap: 'wrap',
+                    }}>
+                      <span style={{ color: t.accent, fontWeight: 600 }}>{exp.role}</span>
+                      <span style={{ width: 3, height: 3, borderRadius: '50%', background: t.faint }} />
+                      <span style={{ color: t.faint }}>{exp.date}</span>
                     </div>
-                    <span className="mono" style={{ fontSize: 13, color: t.faint }}>{r.year}</span>
+
+                    {/* Divider */}
+                    {exp.groups && exp.groups.length > 0 && (
+                      <div style={{ height: 1, background: t.border, margin: '12px 0 10px' }} />
+                    )}
+
+                    {/* Project groups */}
+                    {exp.groups && exp.groups.map((g, gi) => {
+                      const colorMap = {
+                        accent: t.accent,
+                        warm: t.warm,
+                        mint: t.mint,
+                      };
+                      const gc = colorMap[g.color] || t.accent;
+                      return (
+                        <div key={gi} style={{ marginBottom: gi < exp.groups.length - 1 ? 12 : 0 }}>
+                          {/* Group title */}
+                          <div style={{
+                            fontSize: 10.5, fontWeight: 700,
+                            letterSpacing: '.07em', textTransform: 'uppercase',
+                            color: gc,
+                            marginBottom: 6,
+                            display: 'flex', alignItems: 'center', gap: 6,
+                          }}>
+                            <span style={{
+                              width: 4, height: 4, borderRadius: '50%',
+                              background: gc,
+                              boxShadow: `0 0 6px ${gc}`,
+                              flexShrink: 0,
+                            }} />
+                            {g.title}
+                          </div>
+
+                          {/* Bullets */}
+                          <ul style={{
+                            listStyle: 'none',
+                            padding: 0, margin: 0,
+                            display: 'flex', flexDirection: 'column', gap: 5,
+                          }}>
+                            {g.bullets.map((b, bi) => (
+                              <li key={bi} style={{
+                                fontSize: 11.5,
+                                lineHeight: 1.6,
+                                color: t.dim,
+                                paddingLeft: 12,
+                                position: 'relative',
+                              }}>
+                                <span aria-hidden style={{
+                                  position: 'absolute', left: 0, top: '0.6em',
+                                  width: 4, height: 1.5, borderRadius: 1,
+                                  background: t.faint,
+                                }} />
+                                {b}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      );
+                    })}
                   </div>
                 </Reveal>
               ))}
@@ -516,6 +693,108 @@ export default function Portfolio() {
           </div>
         </section>
 
+        {/* ═══════════════ RECOGNITION ═══════════════ */}
+        <section id="recognition" style={{ paddingTop: 0, paddingBottom: 'clamp(60px,8vw,110px)' }}>
+          <div className="wrap">
+            <Reveal>
+              <div style={{
+                display: 'flex', alignItems: 'center', gap: 14,
+                marginBottom: 24,
+              }}>
+                <span style={{
+                  display: 'inline-flex', alignItems: 'center', gap: 8,
+                  color: t.warm,
+                }}>
+                  <span style={{
+                    display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                    width: 20, height: 20, borderRadius: 6,
+                    background: `${t.warm}1a`,
+                    border: `1px solid ${t.warm}44`,
+                    fontSize: 11, color: t.warm,
+                  }}>★</span>
+                  <span className="mono" style={{
+                    fontSize: 12, letterSpacing: '0.16em',
+                    textTransform: 'uppercase', fontWeight: 600,
+                  }}>
+                    Recognition
+                  </span>
+                </span>
+                <span style={{ flex: 1, height: 1, background: t.border }} />
+                <span className="mono" style={{ fontSize: 12, color: t.faint }}>
+                  {RECOGNITION.length} awards
+                </span>
+              </div>
+            </Reveal>
+
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,320px),1fr))',
+              gap: 14,
+            }}>
+              {RECOGNITION.map((r, i) => (
+                <Reveal key={r.title} delay={i * 0.06}>
+                  <div
+                    className="rec-card"
+                    style={{
+                      padding: '20px 22px',
+                      borderRadius: 14,
+                      background: t.surface,
+                      border: `1px solid ${t.border}`,
+                      position: 'relative',
+                      overflow: 'hidden',
+                      height: '100%',
+                    }}
+                  >
+                    <div aria-hidden style={{
+                      position: 'absolute', top: -40, right: -40,
+                      width: 100, height: 100, borderRadius: '50%',
+                      background: `radial-gradient(circle, ${t.warm}33, transparent 70%)`,
+                      pointerEvents: 'none',
+                    }} />
+
+                    <div style={{
+                      display: 'inline-flex', alignItems: 'center', gap: 8,
+                      marginBottom: 12,
+                      position: 'relative',
+                    }}>
+                      <span className="mono" style={{
+                        fontSize: 10.5, fontWeight: 700,
+                        letterSpacing: '.12em',
+                        padding: '3px 9px',
+                        borderRadius: 99,
+                        background: `${t.warm}1a`,
+                        border: `1px solid ${t.warm}44`,
+                        color: t.warm,
+                      }}>
+                        {r.year}
+                      </span>
+                    </div>
+
+                    <div style={{
+                      fontSize: 15.5, fontWeight: 600,
+                      letterSpacing: '-.01em',
+                      lineHeight: 1.3,
+                      position: 'relative',
+                      color: t.text,
+                    }}>
+                      {r.title}
+                    </div>
+
+                    <div style={{
+                      fontSize: 13, color: t.dim,
+                      marginTop: 8, lineHeight: 1.55,
+                      position: 'relative',
+                    }}>
+                      {r.desc}
+                    </div>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ═══════════════ AI ═══════════════ */}
         <section id="ai" className="sec" style={{ paddingTop: 0 }}>
           <div className="wrap">
             <Reveal>
@@ -526,12 +805,7 @@ export default function Portfolio() {
             </Reveal>
             <Reveal delay={0.08}>
               <p style={{ fontSize: 'clamp(18px,2vw,22px)', color: t.dim, maxWidth: 660, lineHeight: 1.65, marginBottom: 'clamp(36px,4.5vw,60px)' }}>
-            Frontend taught me how people use software. AI engineering is what happens behind the screen: orchestrating retrieval architectures, building multi-step agents, and connecting precise tool calls. I build across both worlds.
-
-
-
-
-
+                Frontend taught me how people use software. AI engineering is what happens behind the screen: orchestrating retrieval architectures, building multi-step agents, and connecting precise tool calls. I build across both worlds.
               </p>
             </Reveal>
             <Reveal>
@@ -565,10 +839,10 @@ export default function Portfolio() {
           </div>
         </section>
 
+        {/* ═══════════════ WORK ═══════════════ */}
         <section id="work" style={{ paddingTop: 'clamp(40px,6vw,80px)' }}>
           <div className="wrap" style={{ marginBottom: 'clamp(30px,5vw,60px)' }}>
-            <Reveal><h2 className="h2">Selected <i>work</i></h2></Reveal>
-            <Reveal delay={0.1}><p style={{ fontSize: 18, color: t.dim, marginTop: 18, maxWidth: 520 }}>Six projects. Keep scrolling, each one stacks on the last.</p></Reveal>
+            <Reveal><h2 className="h2">Proof of <i>work</i></h2></Reveal>
           </div>
           <WorkStack t={t} />
         </section>
@@ -726,7 +1000,6 @@ function Hero({ t }) {
           ))}
         </h1>
 
-        {/* NOTE: no opacity fade here — hero text stays fully visible while scrolling */}
         <div>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: 30, flexWrap: 'wrap' }}>
             <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7, duration: 0.8 }} style={{ maxWidth: 560 }}>
@@ -778,7 +1051,7 @@ function WorkStack({ t }) {
 function StackCard({ p, i, n, progress, t }) {
   const scale = useTransform(progress, [i / n, 1], [1, 1 - (n - i) * 0.03]);
   return (
-    <div style={{ height: '100vh', position: 'sticky', top: 0, display: 'flex', alignItems: 'center', padding: '90px 0 20px' }}>
+    <div style={{ height: '100vh', position: 'sticky', top: 0, display: 'flex', alignItems: 'center', padding: '90px 0 0' }}>
       <div className="wrap" style={{ width: '100%' }}>
         <motion.article className="pcard" style={{ scale, y: i * 14, transformOrigin: 'top center' }}>
           <div style={{ position: 'relative', overflow: 'hidden', background: `linear-gradient(135deg, ${p.c}55, ${t.surface2})` }}>
@@ -818,13 +1091,11 @@ function StackCard({ p, i, n, progress, t }) {
 function OffTime({ t }) {
   const [tab, setTab] = useState('music');
   return (
-    <section id="life" className="sec" style={{ paddingTop: 0 }}>
+    <section id="life" className="sec" style={{ paddingTop: 'clamp(20px,3vw,40px)', paddingBottom: 0 }}>
       <div className="wrap">
         <Reveal>
-          <br></br>
           <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16, marginBottom: 'clamp(20px,2.5vw,28px)' }}>
-            <h2 className="h2">Away from
-the  <i>keyboard</i></h2>
+            <h2 className="h2">Away from the <i>keyboard</i></h2>
             <span className="mono" style={{ fontSize: 13, color: t.faint }}>music · film · code</span>
           </div>
         </Reveal>
@@ -987,7 +1258,7 @@ function ReelPanel({ t }) {
 }
 
 /* ═════════════════════════════════════════════════
-   MUSIC PLAYER — YouTube IFrame, visible video
+   MUSIC PLAYER
    ═════════════════════════════════════════════════ */
 function MusicPlayer({ t }) {
   const [idx, setIdx] = useState(0);
