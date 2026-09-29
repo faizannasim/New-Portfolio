@@ -446,7 +446,7 @@ export default function Portfolio() {
             </button> */}
            
           {/* </div> */}
-          <a href="https://drive.google.com/file/d/1nPuoR2TjcYr2h2e7-WcdQbYi38DW_dpt/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="nav-resume">
+          <a href="https://drive.google.com/file/d/1fjrdhe3k8yrxq8kD_gFdiGlL2OFNoz71/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="nav-resume">
               Resume <ArrowUpRight size={13} />
             </a>
            
