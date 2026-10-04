@@ -484,7 +484,7 @@ export default function Portfolio() {
         <Hero t={t} />
         <BandMarquee t={t} items={['Frontend developer', 'AI engineer', 'React', 'Python']} dir={1} />
 
-        ═══════════════ EXPERIENCE ═══════════════
+        
         <section id="experience" className="sec">
           <div className="wrap split">
             {/* LEFT: heading */}
